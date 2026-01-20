@@ -216,7 +216,7 @@ $$\text{Anomaly if } \mathcal{L}_{reconstruction} > \mu + 2\sigma$$
 > **Key Result:** LSTM reduces RMSE by **1.7%** vs Linear Regression and **17%** vs Moving Average
 
 #### LSTM Training Progress
-![LSTM Training Loss](analysis_outputs/dl_chart2_training_loss.png)
+![LSTM Training Loss](analysis_outputs/dl_chart2_trainiW@ng_loss.png)
 
 > Training converges smoothly over 100 epochs with learning rate scheduling
 
@@ -623,6 +623,11 @@ Based on our analysis, we recommend the following interventions:
 <p align="center">
 <em>UIDAI Data Hackathon 2026</em>
 </p>
+
+| Name | Role | LinkedIn |
+|:-----|:-----|:---------|
+| **Piyush Verma** | Team Leader | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/piyerx) |
+| **Stiwart Stance Saxena** | Team Member | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/stiwartsaxena) |
 
 ---
 
