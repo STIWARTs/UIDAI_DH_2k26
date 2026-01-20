@@ -24,6 +24,13 @@
   <img src="https://img.shields.io/badge/Pandas-2.0+-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas"/>
   <img src="https://img.shields.io/badge/Plotly-5.0+-3F4F75?style=for-the-badge&logo=plotly&logoColor=white" alt="Plotly"/>
   <img src="https://img.shields.io/badge/Scikit--Learn-1.0+-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="Scikit-Learn"/>
+  <img src="https://img.shields.io/badge/PyTorch-2.0+-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" alt="PyTorch"/>
+  <img src="https://img.shields.io/badge/SHAP-Explainable_AI-FF6F00?style=for-the-badge" alt="SHAP"/>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Branch-MAIN-blue?style=flat-square" alt="MAIN"/>
+  <img src="https://img.shields.io/badge/Branch-deep--learning-orange?style=flat-square" alt="Deep Learning"/>
 </p>
 
 ---
@@ -33,6 +40,7 @@
 - [Problem Statement](#-problem-statement)
 - [Our Solution](#-our-solution)
 - [Key Features](#-key-features)
+- [🚀 Deep Learning Edition (NEW!)](#-deep-learning-edition-new)
 - [Architecture](#-architecture)
 - [Key Findings](#-key-findings)
 - [Visualizations](#-visualizations)
@@ -143,6 +151,85 @@ We built an intelligent system that identifies **"Ghost Cohorts"** — children 
 </td>
 </tr>
 </table>
+
+---
+
+## 🚀 Deep Learning Edition (NEW!)
+
+> **Branch:** `deep-learning` | **Notebook:** `MBU_Gap_Analyzer_DeepLearning.ipynb`
+
+We've enhanced the standard ML solution with **4 cutting-edge Deep Learning modules** to deliver a production-ready, hackathon-winning submission.
+
+### Module Overview
+
+| # | Module | Technology | Purpose |
+|:-:|:-------|:-----------|:--------|
+| 1 | **LSTM Forecaster** | PyTorch | Time-series prediction for MBU demand during school admission rush |
+| 2 | **Autoencoder Anomaly** | PyTorch | Unsupervised detection of suspicious districts with abnormal patterns |
+| 3 | **SHAP Explainability** | SHAP Library | Explain WHY K-Means classified districts as Service Deserts |
+| 4 | **Geospatial Map** | Folium | Interactive India map with color-coded Service Desert markers |
+
+### 🧠 Module 1: LSTM Time-Series Forecaster
+
+```
+Architecture: Input → LSTM (2 layers, 64 hidden) → FC → Output
+```
+
+**LSTM (Long Short-Term Memory)** captures temporal patterns in biometric update trends to predict future MBU demand.
+
+$$h_t = o_t \odot \tanh(C_t)$$
+
+- **Training:** 100 epochs with Adam optimizer + learning rate scheduling
+- **Output:** 6-month forecast to anticipate school admission rush (June-July 2026)
+- **Use Case:** UIDAI can pre-deploy mobile Seva Kendras to high-demand districts
+
+### 🔍 Module 2: Autoencoder Anomaly Detector
+
+```
+Encoder: 5 features → 32 → 16 → 8 (bottleneck)
+Decoder: 8 → 16 → 32 → 5 features (reconstruction)
+```
+
+**Autoencoder** learns normal patterns and flags districts with high reconstruction error as anomalies.
+
+$$\text{Anomaly if } \mathcal{L}_{reconstruction} > \mu + 2\sigma$$
+
+- **Detection:** Districts with abnormal enrolment-to-update ratios
+- **Use Case:** Identify data quality issues or potential fraud
+
+### 📊 Module 3: SHAP Explainable AI
+
+**SHAP (SHapley Additive exPlanations)** uses game theory to explain model decisions.
+
+- **Method:** KernelSHAP for K-Means clustering
+- **Output:** Feature importance showing why a district is classified as Service Desert
+- **Use Case:** Provide transparent, auditable explanations for policy decisions
+
+### 🗺️ Module 4: Interactive Geospatial Map
+
+**Folium** generates an interactive HTML map of India with:
+
+| Marker Color | Status | Compliance |
+|:------------:|:-------|:-----------|
+| 🔴 Red | Service Desert | < 50% |
+| 🟠 Orange | At Risk | 50-80% |
+| 🟢 Green | Compliant | > 80% |
+
+- **Popups:** District name, compliance ratio, MBU gap
+- **Output:** `analysis_outputs/service_desert_map.html`
+
+### Quick Start (Deep Learning Edition)
+
+```bash
+# Switch to deep-learning branch
+git checkout deep-learning
+
+# Install additional dependencies
+pip install torch shap folium
+
+# Run the notebook
+jupyter notebook MBU_Gap_Analyzer_DeepLearning.ipynb
+```
 
 ---
 
@@ -273,11 +360,18 @@ pip install pandas numpy plotly scikit-learn scipy jupyter
 pip install prophet
 ```
 
+### Deep Learning Edition Dependencies
+```bash
+pip install torch shap folium kaleido
+```
+
 ---
 
 ## 📖 Usage
 
 ### Run the Analysis
+
+#### Standard ML Edition (MAIN branch)
 
 1. **Open Jupyter Notebook**
    ```bash
@@ -293,6 +387,29 @@ pip install prophet
    - CSV exports saved to `analysis_outputs/` folder
    - HTML charts for PDF conversion
 
+#### 🚀 Deep Learning Edition (deep-learning branch)
+
+1. **Switch to deep-learning branch**
+   ```bash
+   git checkout deep-learning
+   ```
+
+2. **Install Deep Learning dependencies**
+   ```bash
+   pip install torch shap folium
+   ```
+
+3. **Open the Deep Learning notebook**
+   ```bash
+   jupyter notebook MBU_Gap_Analyzer_DeepLearning.ipynb
+   ```
+
+4. **Execute All Cells** - Includes 4 advanced AI modules:
+   - Module 1: LSTM Time-Series Forecaster
+   - Module 2: Autoencoder Anomaly Detector
+   - Module 3: SHAP Explainable AI
+   - Module 4: Folium Geospatial Map
+
 ### Output Files
 
 ```
@@ -306,7 +423,8 @@ analysis_outputs/
 ├── chart3_service_desert_scatter.html
 ├── chart4_daily_trends.html
 ├── chart5_forecast.html
-└── chart6_financial_impact.html
+├── chart6_financial_impact.html
+└── service_desert_map.html             # 🆕 Interactive Folium map (Deep Learning Edition)
 ```
 
 ---
@@ -348,30 +466,61 @@ uidai_datasets/
 
 <table>
 <tr>
-<td align="center" width="20%">
+<td align="center" width="16%">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="48" height="48" alt="Python" />
 <br><strong>Python 3.10+</strong>
 <br><sub>Core Language</sub>
 </td>
-<td align="center" width="20%">
+<td align="center" width="16%">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" width="48" height="48" alt="Pandas" />
 <br><strong>Pandas</strong>
 <br><sub>Data Processing</sub>
 </td>
-<td align="center" width="20%">
+<td align="center" width="16%">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" width="48" height="48" alt="NumPy" />
 <br><strong>NumPy</strong>
 <br><sub>Numerical Computing</sub>
 </td>
-<td align="center" width="20%">
+<td align="center" width="16%">
 <img src="https://images.plot.ly/logo/new-branding/plotly-logomark.png" width="48" height="48" alt="Plotly" />
 <br><strong>Plotly</strong>
 <br><sub>Visualizations</sub>
 </td>
-<td align="center" width="20%">
+<td align="center" width="16%">
 <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" width="48" height="48" alt="Scikit-Learn" />
 <br><strong>Scikit-Learn</strong>
 <br><sub>ML Clustering</sub>
+</td>
+<td align="center" width="16%">
+<img src="https://pytorch.org/assets/images/pytorch-logo.png" width="48" height="48" alt="PyTorch" />
+<br><strong>PyTorch</strong>
+<br><sub>Deep Learning</sub>
+</td>
+</tr>
+<tr>
+<td align="center" width="16%">
+<img src="https://shap.readthedocs.io/en/latest/_static/shap_logo.png" width="48" height="48" alt="SHAP" />
+<br><strong>SHAP</strong>
+<br><sub>Explainable AI</sub>
+</td>
+<td align="center" width="16%">
+<img src="https://python-visualization.github.io/folium/latest/_images/folium_logo.png" width="48" height="48" alt="Folium" />
+<br><strong>Folium</strong>
+<br><sub>Geospatial Maps</sub>
+</td>
+<td align="center" width="16%">
+<img src="https://raw.githubusercontent.com/facebook/prophet/main/docs/static/logo.svg" width="48" height="48" alt="Prophet" />
+<br><strong>Prophet</strong>
+<br><sub>Time Series</sub>
+</td>
+<td align="center" width="16%">
+<img src="https://kaleido-io.github.io/kaleido/img/kaleido-logo.svg" width="48" height="48" alt="Kaleido" />
+<br><strong>Kaleido</strong>
+<br><sub>Chart Export</sub>
+</td>
+<td colspan="2" align="center" width="32%">
+<br><strong>Jupyter Notebook</strong>
+<br><sub>Interactive Development</sub>
 </td>
 </tr>
 </table>
