@@ -1,0 +1,2997 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_2c6160a0d8498ba18e7e0603505ca25b {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<h3 style="position:fixed; top:10px; left:50px; z-index:9999; 
+    background-color:white; padding:10px; border-radius:5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
+    MBU Service Desert Map - UIDAI Hackathon 2026
+</h3>
+    
+<div style="position:fixed; bottom:50px; left:50px; z-index:9999;
+    background-color:white; padding:15px; border-radius:5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
+    <h4 style="margin:0 0 10px 0;">Legend (Service Desert Districts)</h4>
+    <i class="fa fa-map-marker" style="color:red;"></i> Critical (5+ Service Deserts)<br>
+    <i class="fa fa-map-marker" style="color:orange;"></i> At Risk (1-4 Service Deserts)<br>
+    <i class="fa fa-map-marker" style="color:#f0e68c;"></i> Moderate (Moderate Risk only)<br>
+    <i class="fa fa-map-marker" style="color:green;"></i> Compliant (No problem districts)
+</div>
+    
+            <div class="folium-map" id="map_2c6160a0d8498ba18e7e0603505ca25b" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_2c6160a0d8498ba18e7e0603505ca25b = L.map(
+                "map_2c6160a0d8498ba18e7e0603505ca25b",
+                {
+                    center: [20.5937, 78.9629],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_55d981cc150c9fb5ea00063c89dbd8ec = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_55d981cc150c9fb5ea00063c89dbd8ec.addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var marker_98d913ab8b21e726ab28bdc8daad4e3c = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_e11a943029d76d6a6e82ad1d825238ab = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_97da8a6835d2ffecb3e2bd52dfb1dcae = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_eaf9108b1629a2f827c0efb91500137e = $(`<div id="html_eaf9108b1629a2f827c0efb91500137e" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">100000</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (1 Service Deserts)</span><br>         <b>Service Deserts:</b> 1 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 1 children at risk<br>         <b>Total Districts:</b> 1     </div>     </div>`)[0];
+                popup_97da8a6835d2ffecb3e2bd52dfb1dcae.setContent(html_eaf9108b1629a2f827c0efb91500137e);
+            
+        
+
+        marker_98d913ab8b21e726ab28bdc8daad4e3c.bindPopup(popup_97da8a6835d2ffecb3e2bd52dfb1dcae)
+        ;
+
+        
+    
+    
+            marker_98d913ab8b21e726ab28bdc8daad4e3c.bindTooltip(
+                `<div>
+                     100000: 1 Service Deserts, 1 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_98d913ab8b21e726ab28bdc8daad4e3c.setIcon(icon_e11a943029d76d6a6e82ad1d825238ab);
+            
+    
+            var marker_997a3c9780bcd6a04c2b20d70fdece94 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_d0e7a9f315b70b20ca1f651e6c950f70 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7ecd024a23775072261b253e8855bc96 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_9c6ec0791fc78a8ae1e3ee2191fc6d15 = $(`<div id="html_9c6ec0791fc78a8ae1e3ee2191fc6d15" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Andaman & Nicobar Islands</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Service Deserts:</b> 0 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 0 children at risk<br>         <b>Total Districts:</b> 3     </div>     </div>`)[0];
+                popup_7ecd024a23775072261b253e8855bc96.setContent(html_9c6ec0791fc78a8ae1e3ee2191fc6d15);
+            
+        
+
+        marker_997a3c9780bcd6a04c2b20d70fdece94.bindPopup(popup_7ecd024a23775072261b253e8855bc96)
+        ;
+
+        
+    
+    
+            marker_997a3c9780bcd6a04c2b20d70fdece94.bindTooltip(
+                `<div>
+                     Andaman & Nicobar Islands: 0 Service Deserts, 0 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_997a3c9780bcd6a04c2b20d70fdece94.setIcon(icon_d0e7a9f315b70b20ca1f651e6c950f70);
+            
+    
+            var marker_dff809fa03d0cb60a501ad255a9dec25 = L.marker(
+                [11.7401, 92.6586],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_65c793d05450e676c2d50ca34bb62e11 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_654be1ddc0696518d6b9e954a7d8539c = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_0fc9526c0f71f94ab9a380da756a0afc = $(`<div id="html_0fc9526c0f71f94ab9a380da756a0afc" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Andaman and Nicobar Islands</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Service Deserts:</b> 0 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 0 children at risk<br>         <b>Total Districts:</b> 3     </div>     </div>`)[0];
+                popup_654be1ddc0696518d6b9e954a7d8539c.setContent(html_0fc9526c0f71f94ab9a380da756a0afc);
+            
+        
+
+        marker_dff809fa03d0cb60a501ad255a9dec25.bindPopup(popup_654be1ddc0696518d6b9e954a7d8539c)
+        ;
+
+        
+    
+    
+            marker_dff809fa03d0cb60a501ad255a9dec25.bindTooltip(
+                `<div>
+                     Andaman and Nicobar Islands: 0 Service Deserts, 0 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_dff809fa03d0cb60a501ad255a9dec25.setIcon(icon_65c793d05450e676c2d50ca34bb62e11);
+            
+    
+            var marker_9f24cc473f831b791390af3bc525d08f = L.marker(
+                [15.9129, 79.74],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_fc9aa997aca1a0988ae7f85bd4a052ed = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9a254ee108d3ae643eb1141ba661f421 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_5367fdf2dbf8276a5d815f3dcddbba16 = $(`<div id="html_5367fdf2dbf8276a5d815f3dcddbba16" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Andhra Pradesh</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (2 Service Deserts)</span><br>         <b>Service Deserts:</b> 2 districts<br>         <b>Moderate Risk:</b> 1 districts<br>         <b>MBU Gap:</b> 2,783 children at risk<br>         <b>Total Districts:</b> 47     </div>     </div>`)[0];
+                popup_9a254ee108d3ae643eb1141ba661f421.setContent(html_5367fdf2dbf8276a5d815f3dcddbba16);
+            
+        
+
+        marker_9f24cc473f831b791390af3bc525d08f.bindPopup(popup_9a254ee108d3ae643eb1141ba661f421)
+        ;
+
+        
+    
+    
+            marker_9f24cc473f831b791390af3bc525d08f.bindTooltip(
+                `<div>
+                     Andhra Pradesh: 2 Service Deserts, 2,783 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9f24cc473f831b791390af3bc525d08f.setIcon(icon_fc9aa997aca1a0988ae7f85bd4a052ed);
+            
+    
+            var marker_45bb3056ebc590c8ba1e18760ba83f40 = L.marker(
+                [27.0844, 93.6053],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_49d48ab2d1a92c4543e12322af09abe7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c36ce6891ebba7e486623953eb7fd001 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_bdfc1eae6141e1ad9e407f3e7c7613a5 = $(`<div id="html_bdfc1eae6141e1ad9e407f3e7c7613a5" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Arunachal Pradesh</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Service Deserts:</b> 0 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 0 children at risk<br>         <b>Total Districts:</b> 25     </div>     </div>`)[0];
+                popup_c36ce6891ebba7e486623953eb7fd001.setContent(html_bdfc1eae6141e1ad9e407f3e7c7613a5);
+            
+        
+
+        marker_45bb3056ebc590c8ba1e18760ba83f40.bindPopup(popup_c36ce6891ebba7e486623953eb7fd001)
+        ;
+
+        
+    
+    
+            marker_45bb3056ebc590c8ba1e18760ba83f40.bindTooltip(
+                `<div>
+                     Arunachal Pradesh: 0 Service Deserts, 0 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_45bb3056ebc590c8ba1e18760ba83f40.setIcon(icon_49d48ab2d1a92c4543e12322af09abe7);
+            
+    
+            var marker_3a9137124ab036ab8af357202acc7a28 = L.marker(
+                [26.2006, 92.9376],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_757ddb4ed2dfede5e08cc304ed615b0e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-triangle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e57f211430f59c464525224815336035 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_eef6e08b4c6eca4956787991274c30b5 = $(`<div id="html_eef6e08b4c6eca4956787991274c30b5" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Assam</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:red;">CRITICAL (5+ Service Deserts)</span><br>         <b>Service Deserts:</b> 5 districts<br>         <b>Moderate Risk:</b> 1 districts<br>         <b>MBU Gap:</b> 996 children at risk<br>         <b>Total Districts:</b> 38     </div>     </div>`)[0];
+                popup_e57f211430f59c464525224815336035.setContent(html_eef6e08b4c6eca4956787991274c30b5);
+            
+        
+
+        marker_3a9137124ab036ab8af357202acc7a28.bindPopup(popup_e57f211430f59c464525224815336035)
+        ;
+
+        
+    
+    
+            marker_3a9137124ab036ab8af357202acc7a28.bindTooltip(
+                `<div>
+                     Assam: 5 Service Deserts, 996 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3a9137124ab036ab8af357202acc7a28.setIcon(icon_757ddb4ed2dfede5e08cc304ed615b0e);
+            
+    
+            var marker_21768bdec7b75661d5566b7f41cd564a = L.marker(
+                [25.0961, 85.3131],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_5e05ebe29cf25304e723c2f0855a3ea5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-triangle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5fce5bdf3c6ce7f4acc78daebb6c2610 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_7e4059cf9d6012b795ead91791a8adf1 = $(`<div id="html_7e4059cf9d6012b795ead91791a8adf1" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Bihar</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:red;">CRITICAL (5+ Service Deserts)</span><br>         <b>Service Deserts:</b> 9 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 30,170 children at risk<br>         <b>Total Districts:</b> 48     </div>     </div>`)[0];
+                popup_5fce5bdf3c6ce7f4acc78daebb6c2610.setContent(html_7e4059cf9d6012b795ead91791a8adf1);
+            
+        
+
+        marker_21768bdec7b75661d5566b7f41cd564a.bindPopup(popup_5fce5bdf3c6ce7f4acc78daebb6c2610)
+        ;
+
+        
+    
+    
+            marker_21768bdec7b75661d5566b7f41cd564a.bindTooltip(
+                `<div>
+                     Bihar: 9 Service Deserts, 30,170 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_21768bdec7b75661d5566b7f41cd564a.setIcon(icon_5e05ebe29cf25304e723c2f0855a3ea5);
+            
+    
+            var marker_0c1a9b82486d6b5ebcc62653eda48400 = L.marker(
+                [30.7333, 76.7794],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_f632e53088b5f79630103fc5312e0a8d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8511cecf50087d853108c0bd734a14da = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_bd5200c59d80582b5ad02ae276c616ed = $(`<div id="html_bd5200c59d80582b5ad02ae276c616ed" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Chandigarh</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (1 Service Deserts)</span><br>         <b>Service Deserts:</b> 1 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 0 children at risk<br>         <b>Total Districts:</b> 3     </div>     </div>`)[0];
+                popup_8511cecf50087d853108c0bd734a14da.setContent(html_bd5200c59d80582b5ad02ae276c616ed);
+            
+        
+
+        marker_0c1a9b82486d6b5ebcc62653eda48400.bindPopup(popup_8511cecf50087d853108c0bd734a14da)
+        ;
+
+        
+    
+    
+            marker_0c1a9b82486d6b5ebcc62653eda48400.bindTooltip(
+                `<div>
+                     Chandigarh: 1 Service Deserts, 0 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0c1a9b82486d6b5ebcc62653eda48400.setIcon(icon_f632e53088b5f79630103fc5312e0a8d);
+            
+    
+            var marker_fdb5e0b1fd82e20a743caaa8af02ee06 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_c289796c2a911e3ed7fa675b285b3abe = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3d00b6ac3d466551ff27a75f4dd3fc02 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_21fd4855d7a87da3e15297a387509c9e = $(`<div id="html_21fd4855d7a87da3e15297a387509c9e" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Chhatisgarh</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (1 Service Deserts)</span><br>         <b>Service Deserts:</b> 1 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 0 children at risk<br>         <b>Total Districts:</b> 1     </div>     </div>`)[0];
+                popup_3d00b6ac3d466551ff27a75f4dd3fc02.setContent(html_21fd4855d7a87da3e15297a387509c9e);
+            
+        
+
+        marker_fdb5e0b1fd82e20a743caaa8af02ee06.bindPopup(popup_3d00b6ac3d466551ff27a75f4dd3fc02)
+        ;
+
+        
+    
+    
+            marker_fdb5e0b1fd82e20a743caaa8af02ee06.bindTooltip(
+                `<div>
+                     Chhatisgarh: 1 Service Deserts, 0 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fdb5e0b1fd82e20a743caaa8af02ee06.setIcon(icon_c289796c2a911e3ed7fa675b285b3abe);
+            
+    
+            var marker_399b7829860542ad60182a7d6338f1f2 = L.marker(
+                [21.2787, 81.8661],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_2e759cf55afa23e509c85be02de95819 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f8848c7f5059d91ef48c8e1a21f6cdba = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_2d59500a2af29c34a09f8ca1f0179553 = $(`<div id="html_2d59500a2af29c34a09f8ca1f0179553" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Chhattisgarh</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (4 Service Deserts)</span><br>         <b>Service Deserts:</b> 4 districts<br>         <b>Moderate Risk:</b> 2 districts<br>         <b>MBU Gap:</b> 1,377 children at risk<br>         <b>Total Districts:</b> 41     </div>     </div>`)[0];
+                popup_f8848c7f5059d91ef48c8e1a21f6cdba.setContent(html_2d59500a2af29c34a09f8ca1f0179553);
+            
+        
+
+        marker_399b7829860542ad60182a7d6338f1f2.bindPopup(popup_f8848c7f5059d91ef48c8e1a21f6cdba)
+        ;
+
+        
+    
+    
+            marker_399b7829860542ad60182a7d6338f1f2.bindTooltip(
+                `<div>
+                     Chhattisgarh: 4 Service Deserts, 1,377 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_399b7829860542ad60182a7d6338f1f2.setIcon(icon_2e759cf55afa23e509c85be02de95819);
+            
+    
+            var marker_a45193e74ddf8e1d51436421cdc531b5 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_e13c2dd2636c8d64b81c104165ddfb11 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c4ed2fb47ee0da2832f3cefd9a6c3dbd = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_985f8224737f7a42f1fa02d5ea5fc365 = $(`<div id="html_985f8224737f7a42f1fa02d5ea5fc365" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Dadra & Nagar Haveli</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Service Deserts:</b> 0 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 0 children at risk<br>         <b>Total Districts:</b> 1     </div>     </div>`)[0];
+                popup_c4ed2fb47ee0da2832f3cefd9a6c3dbd.setContent(html_985f8224737f7a42f1fa02d5ea5fc365);
+            
+        
+
+        marker_a45193e74ddf8e1d51436421cdc531b5.bindPopup(popup_c4ed2fb47ee0da2832f3cefd9a6c3dbd)
+        ;
+
+        
+    
+    
+            marker_a45193e74ddf8e1d51436421cdc531b5.bindTooltip(
+                `<div>
+                     Dadra & Nagar Haveli: 0 Service Deserts, 0 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a45193e74ddf8e1d51436421cdc531b5.setIcon(icon_e13c2dd2636c8d64b81c104165ddfb11);
+            
+    
+            var marker_5a13b9ebe5cd9c8fdb3623fb37cf3e60 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_da50b02ba8b45e81920a3acf7caeebae = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_71cd136483c7d0c65c5136e146eb848a = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_ee009b50301fac069b638b25c4e52b65 = $(`<div id="html_ee009b50301fac069b638b25c4e52b65" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Dadra and Nagar Haveli</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Service Deserts:</b> 0 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 0 children at risk<br>         <b>Total Districts:</b> 1     </div>     </div>`)[0];
+                popup_71cd136483c7d0c65c5136e146eb848a.setContent(html_ee009b50301fac069b638b25c4e52b65);
+            
+        
+
+        marker_5a13b9ebe5cd9c8fdb3623fb37cf3e60.bindPopup(popup_71cd136483c7d0c65c5136e146eb848a)
+        ;
+
+        
+    
+    
+            marker_5a13b9ebe5cd9c8fdb3623fb37cf3e60.bindTooltip(
+                `<div>
+                     Dadra and Nagar Haveli: 0 Service Deserts, 0 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5a13b9ebe5cd9c8fdb3623fb37cf3e60.setIcon(icon_da50b02ba8b45e81920a3acf7caeebae);
+            
+    
+            var marker_c9a0eb05acafaad2b8dd31eaecf7ac23 = L.marker(
+                [20.1809, 73.0169],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_c0c467957e7e00435de8255594cecb18 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "beige",
+  "iconColor": "white",
+  "icon": "info-circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e403e32c6d9db5d14f22e2de18f91251 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_86b84dc8b4f6e5c7c6e26b848bf2daf8 = $(`<div id="html_86b84dc8b4f6e5c7c6e26b848bf2daf8" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Dadra and Nagar Haveli and Daman and Diu</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">MODERATE (1 Moderate Risk)</span><br>         <b>Service Deserts:</b> 0 districts<br>         <b>Moderate Risk:</b> 1 districts<br>         <b>MBU Gap:</b> 5 children at risk<br>         <b>Total Districts:</b> 3     </div>     </div>`)[0];
+                popup_e403e32c6d9db5d14f22e2de18f91251.setContent(html_86b84dc8b4f6e5c7c6e26b848bf2daf8);
+            
+        
+
+        marker_c9a0eb05acafaad2b8dd31eaecf7ac23.bindPopup(popup_e403e32c6d9db5d14f22e2de18f91251)
+        ;
+
+        
+    
+    
+            marker_c9a0eb05acafaad2b8dd31eaecf7ac23.bindTooltip(
+                `<div>
+                     Dadra and Nagar Haveli and Daman and Diu: 0 Service Deserts, 5 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c9a0eb05acafaad2b8dd31eaecf7ac23.setIcon(icon_c0c467957e7e00435de8255594cecb18);
+            
+    
+            var marker_7fe0f3de8ac4ba18890f414d8c32465d = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_ce27b17b5960d5ca63bb103e6cc75314 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_628a57a92d9d81476b04609bfb307e9a = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_f8fa1dbbe18ff3e2472f71008ab10c3a = $(`<div id="html_f8fa1dbbe18ff3e2472f71008ab10c3a" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Daman & Diu</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Service Deserts:</b> 0 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 0 children at risk<br>         <b>Total Districts:</b> 2     </div>     </div>`)[0];
+                popup_628a57a92d9d81476b04609bfb307e9a.setContent(html_f8fa1dbbe18ff3e2472f71008ab10c3a);
+            
+        
+
+        marker_7fe0f3de8ac4ba18890f414d8c32465d.bindPopup(popup_628a57a92d9d81476b04609bfb307e9a)
+        ;
+
+        
+    
+    
+            marker_7fe0f3de8ac4ba18890f414d8c32465d.bindTooltip(
+                `<div>
+                     Daman & Diu: 0 Service Deserts, 0 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7fe0f3de8ac4ba18890f414d8c32465d.setIcon(icon_ce27b17b5960d5ca63bb103e6cc75314);
+            
+    
+            var marker_08e19fe9c1bdd3c3a7715a41052d5091 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_2c4da9d48ec40969650e641373766b60 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_df72f2bb1d41460ea4aac6a87f8f6a9e = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_63115a17c15711eee6a49e12683d8a24 = $(`<div id="html_63115a17c15711eee6a49e12683d8a24" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Daman and Diu</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Service Deserts:</b> 0 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 0 children at risk<br>         <b>Total Districts:</b> 2     </div>     </div>`)[0];
+                popup_df72f2bb1d41460ea4aac6a87f8f6a9e.setContent(html_63115a17c15711eee6a49e12683d8a24);
+            
+        
+
+        marker_08e19fe9c1bdd3c3a7715a41052d5091.bindPopup(popup_df72f2bb1d41460ea4aac6a87f8f6a9e)
+        ;
+
+        
+    
+    
+            marker_08e19fe9c1bdd3c3a7715a41052d5091.bindTooltip(
+                `<div>
+                     Daman and Diu: 0 Service Deserts, 0 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_08e19fe9c1bdd3c3a7715a41052d5091.setIcon(icon_2c4da9d48ec40969650e641373766b60);
+            
+    
+            var marker_f924c15939ea4f3f6683f3025af573f1 = L.marker(
+                [28.7041, 77.1025],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_974eca7710be6579f8306d78302c5a13 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6fb3c5a16a84adcff6d5282eb5ef89f7 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_0862c185021320bf36cde20d05ece440 = $(`<div id="html_0862c185021320bf36cde20d05ece440" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Delhi</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (1 Service Deserts)</span><br>         <b>Service Deserts:</b> 1 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 2 children at risk<br>         <b>Total Districts:</b> 14     </div>     </div>`)[0];
+                popup_6fb3c5a16a84adcff6d5282eb5ef89f7.setContent(html_0862c185021320bf36cde20d05ece440);
+            
+        
+
+        marker_f924c15939ea4f3f6683f3025af573f1.bindPopup(popup_6fb3c5a16a84adcff6d5282eb5ef89f7)
+        ;
+
+        
+    
+    
+            marker_f924c15939ea4f3f6683f3025af573f1.bindTooltip(
+                `<div>
+                     Delhi: 1 Service Deserts, 2 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f924c15939ea4f3f6683f3025af573f1.setIcon(icon_974eca7710be6579f8306d78302c5a13);
+            
+    
+            var marker_1ae95be7d889ba2c3a5510f414223cc6 = L.marker(
+                [15.2993, 74.124],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_ad5d52ac29b57d09397abdb8ccc25245 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ad3a20858ed7e71ffec3ff85a2d085a1 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_813e237c637e46414f12ceae4b3ff23b = $(`<div id="html_813e237c637e46414f12ceae4b3ff23b" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Goa</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (1 Service Deserts)</span><br>         <b>Service Deserts:</b> 1 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 0 children at risk<br>         <b>Total Districts:</b> 4     </div>     </div>`)[0];
+                popup_ad3a20858ed7e71ffec3ff85a2d085a1.setContent(html_813e237c637e46414f12ceae4b3ff23b);
+            
+        
+
+        marker_1ae95be7d889ba2c3a5510f414223cc6.bindPopup(popup_ad3a20858ed7e71ffec3ff85a2d085a1)
+        ;
+
+        
+    
+    
+            marker_1ae95be7d889ba2c3a5510f414223cc6.bindTooltip(
+                `<div>
+                     Goa: 1 Service Deserts, 0 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1ae95be7d889ba2c3a5510f414223cc6.setIcon(icon_ad5d52ac29b57d09397abdb8ccc25245);
+            
+    
+            var marker_35d9c3caa2714f0e381f85dd9746fc69 = L.marker(
+                [22.2587, 71.1924],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_85c591d181dfd0bef19e75f9bf334cb5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-triangle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f4f32b7d35b5c1143bb3060a568d12e7 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_9c18def7622f0bbea58eebf34325eea9 = $(`<div id="html_9c18def7622f0bbea58eebf34325eea9" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Gujarat</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:red;">CRITICAL (5+ Service Deserts)</span><br>         <b>Service Deserts:</b> 7 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 33,820 children at risk<br>         <b>Total Districts:</b> 40     </div>     </div>`)[0];
+                popup_f4f32b7d35b5c1143bb3060a568d12e7.setContent(html_9c18def7622f0bbea58eebf34325eea9);
+            
+        
+
+        marker_35d9c3caa2714f0e381f85dd9746fc69.bindPopup(popup_f4f32b7d35b5c1143bb3060a568d12e7)
+        ;
+
+        
+    
+    
+            marker_35d9c3caa2714f0e381f85dd9746fc69.bindTooltip(
+                `<div>
+                     Gujarat: 7 Service Deserts, 33,820 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_35d9c3caa2714f0e381f85dd9746fc69.setIcon(icon_85c591d181dfd0bef19e75f9bf334cb5);
+            
+    
+            var marker_a4754d2f48d0df0d44f7c2d54f173ab2 = L.marker(
+                [29.0588, 76.0856],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_f00a7f36dfed1ac0296f22fedaf7966b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b59bc640b52c04cc89e6a68bdf76e4c5 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_e11fbb31f4b4c49c54549a550152b302 = $(`<div id="html_e11fbb31f4b4c49c54549a550152b302" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Haryana</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (4 Service Deserts)</span><br>         <b>Service Deserts:</b> 4 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 3,894 children at risk<br>         <b>Total Districts:</b> 27     </div>     </div>`)[0];
+                popup_b59bc640b52c04cc89e6a68bdf76e4c5.setContent(html_e11fbb31f4b4c49c54549a550152b302);
+            
+        
+
+        marker_a4754d2f48d0df0d44f7c2d54f173ab2.bindPopup(popup_b59bc640b52c04cc89e6a68bdf76e4c5)
+        ;
+
+        
+    
+    
+            marker_a4754d2f48d0df0d44f7c2d54f173ab2.bindTooltip(
+                `<div>
+                     Haryana: 4 Service Deserts, 3,894 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a4754d2f48d0df0d44f7c2d54f173ab2.setIcon(icon_f00a7f36dfed1ac0296f22fedaf7966b);
+            
+    
+            var marker_73cfd4919516ab7acd8f4088f054b686 = L.marker(
+                [31.1048, 77.1734],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_e0ea888f2762ff2ed3e24308b0f427aa = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7ff2fa043dd0bdd57e92c4d4e4cbf3f2 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_a76b186da24171f4ef35257feadf6aa4 = $(`<div id="html_a76b186da24171f4ef35257feadf6aa4" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Himachal Pradesh</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Service Deserts:</b> 0 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 0 children at risk<br>         <b>Total Districts:</b> 14     </div>     </div>`)[0];
+                popup_7ff2fa043dd0bdd57e92c4d4e4cbf3f2.setContent(html_a76b186da24171f4ef35257feadf6aa4);
+            
+        
+
+        marker_73cfd4919516ab7acd8f4088f054b686.bindPopup(popup_7ff2fa043dd0bdd57e92c4d4e4cbf3f2)
+        ;
+
+        
+    
+    
+            marker_73cfd4919516ab7acd8f4088f054b686.bindTooltip(
+                `<div>
+                     Himachal Pradesh: 0 Service Deserts, 0 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_73cfd4919516ab7acd8f4088f054b686.setIcon(icon_e0ea888f2762ff2ed3e24308b0f427aa);
+            
+    
+            var marker_c6abdbc1954709b5ce00e7ef4c155234 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_ad295c742011a593fb85ba99917ad4b7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-triangle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_93b9be38af5b7df61f78498d53497877 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_22d1895f9a774b472a7f1844b8652657 = $(`<div id="html_22d1895f9a774b472a7f1844b8652657" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Jammu & Kashmir</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:red;">CRITICAL (5+ Service Deserts)</span><br>         <b>Service Deserts:</b> 5 districts<br>         <b>Moderate Risk:</b> 2 districts<br>         <b>MBU Gap:</b> 68 children at risk<br>         <b>Total Districts:</b> 15     </div>     </div>`)[0];
+                popup_93b9be38af5b7df61f78498d53497877.setContent(html_22d1895f9a774b472a7f1844b8652657);
+            
+        
+
+        marker_c6abdbc1954709b5ce00e7ef4c155234.bindPopup(popup_93b9be38af5b7df61f78498d53497877)
+        ;
+
+        
+    
+    
+            marker_c6abdbc1954709b5ce00e7ef4c155234.bindTooltip(
+                `<div>
+                     Jammu & Kashmir: 5 Service Deserts, 68 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c6abdbc1954709b5ce00e7ef4c155234.setIcon(icon_ad295c742011a593fb85ba99917ad4b7);
+            
+    
+            var marker_aed661f2819553169e537b6eb495ccdd = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_facfe81965b8f764705963732dca14a1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_55ecfaafff6d6835dfdf45ca7cfe1aea = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_83a6d9a6d2037eb11037f55e851f8552 = $(`<div id="html_83a6d9a6d2037eb11037f55e851f8552" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Jammu And Kashmir</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (2 Service Deserts)</span><br>         <b>Service Deserts:</b> 2 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 913 children at risk<br>         <b>Total Districts:</b> 2     </div>     </div>`)[0];
+                popup_55ecfaafff6d6835dfdf45ca7cfe1aea.setContent(html_83a6d9a6d2037eb11037f55e851f8552);
+            
+        
+
+        marker_aed661f2819553169e537b6eb495ccdd.bindPopup(popup_55ecfaafff6d6835dfdf45ca7cfe1aea)
+        ;
+
+        
+    
+    
+            marker_aed661f2819553169e537b6eb495ccdd.bindTooltip(
+                `<div>
+                     Jammu And Kashmir: 2 Service Deserts, 913 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_aed661f2819553169e537b6eb495ccdd.setIcon(icon_facfe81965b8f764705963732dca14a1);
+            
+    
+            var marker_9b347df77fdaf871563062ccb4fca91b = L.marker(
+                [33.7782, 76.5762],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_16c74f56c3a4fede563fea1061032e23 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9d3fda49336172bfa5309d19169d8bc5 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_6644433fe84b192c0dc487f39c8e5f9c = $(`<div id="html_6644433fe84b192c0dc487f39c8e5f9c" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Jammu and Kashmir</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (4 Service Deserts)</span><br>         <b>Service Deserts:</b> 4 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 1 children at risk<br>         <b>Total Districts:</b> 27     </div>     </div>`)[0];
+                popup_9d3fda49336172bfa5309d19169d8bc5.setContent(html_6644433fe84b192c0dc487f39c8e5f9c);
+            
+        
+
+        marker_9b347df77fdaf871563062ccb4fca91b.bindPopup(popup_9d3fda49336172bfa5309d19169d8bc5)
+        ;
+
+        
+    
+    
+            marker_9b347df77fdaf871563062ccb4fca91b.bindTooltip(
+                `<div>
+                     Jammu and Kashmir: 4 Service Deserts, 1 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9b347df77fdaf871563062ccb4fca91b.setIcon(icon_16c74f56c3a4fede563fea1061032e23);
+            
+    
+            var marker_1eacbd0fbdd8b7390afb567e2de6cd2e = L.marker(
+                [23.6102, 85.2799],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_1cb0915bd4218bb3a7517b246d6416cf = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d305c585db6f830afe3f89cde57f5f24 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_68343d825c93da7b53a3697a69f54cbb = $(`<div id="html_68343d825c93da7b53a3697a69f54cbb" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Jharkhand</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (1 Service Deserts)</span><br>         <b>Service Deserts:</b> 1 districts<br>         <b>Moderate Risk:</b> 1 districts<br>         <b>MBU Gap:</b> 1,395 children at risk<br>         <b>Total Districts:</b> 35     </div>     </div>`)[0];
+                popup_d305c585db6f830afe3f89cde57f5f24.setContent(html_68343d825c93da7b53a3697a69f54cbb);
+            
+        
+
+        marker_1eacbd0fbdd8b7390afb567e2de6cd2e.bindPopup(popup_d305c585db6f830afe3f89cde57f5f24)
+        ;
+
+        
+    
+    
+            marker_1eacbd0fbdd8b7390afb567e2de6cd2e.bindTooltip(
+                `<div>
+                     Jharkhand: 1 Service Deserts, 1,395 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1eacbd0fbdd8b7390afb567e2de6cd2e.setIcon(icon_1cb0915bd4218bb3a7517b246d6416cf);
+            
+    
+            var marker_c2054fca2d8c3055be2231150aa325f3 = L.marker(
+                [15.3173, 75.7139],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_ddda2420e3f5669f68517a0497457775 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c3349c332fe9bff5179e3f0102e74f9c = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_f7f6be50974d71a12b78e0fecd178958 = $(`<div id="html_f7f6be50974d71a12b78e0fecd178958" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Karnataka</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (4 Service Deserts)</span><br>         <b>Service Deserts:</b> 4 districts<br>         <b>Moderate Risk:</b> 1 districts<br>         <b>MBU Gap:</b> 21,816 children at risk<br>         <b>Total Districts:</b> 56     </div>     </div>`)[0];
+                popup_c3349c332fe9bff5179e3f0102e74f9c.setContent(html_f7f6be50974d71a12b78e0fecd178958);
+            
+        
+
+        marker_c2054fca2d8c3055be2231150aa325f3.bindPopup(popup_c3349c332fe9bff5179e3f0102e74f9c)
+        ;
+
+        
+    
+    
+            marker_c2054fca2d8c3055be2231150aa325f3.bindTooltip(
+                `<div>
+                     Karnataka: 4 Service Deserts, 21,816 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c2054fca2d8c3055be2231150aa325f3.setIcon(icon_ddda2420e3f5669f68517a0497457775);
+            
+    
+            var marker_d57189c9d04b22c1bdf824e00457e7b2 = L.marker(
+                [10.8505, 76.2711],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_5452c0fe09db48d73b0891f322f1c643 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "beige",
+  "iconColor": "white",
+  "icon": "info-circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_076a5d2c2fe31c31dd2c646d628b5fed = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_ee4379724163f8d5495f9516e2c0d22f = $(`<div id="html_ee4379724163f8d5495f9516e2c0d22f" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Kerala</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">MODERATE (1 Moderate Risk)</span><br>         <b>Service Deserts:</b> 0 districts<br>         <b>Moderate Risk:</b> 1 districts<br>         <b>MBU Gap:</b> 104 children at risk<br>         <b>Total Districts:</b> 15     </div>     </div>`)[0];
+                popup_076a5d2c2fe31c31dd2c646d628b5fed.setContent(html_ee4379724163f8d5495f9516e2c0d22f);
+            
+        
+
+        marker_d57189c9d04b22c1bdf824e00457e7b2.bindPopup(popup_076a5d2c2fe31c31dd2c646d628b5fed)
+        ;
+
+        
+    
+    
+            marker_d57189c9d04b22c1bdf824e00457e7b2.bindTooltip(
+                `<div>
+                     Kerala: 0 Service Deserts, 104 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d57189c9d04b22c1bdf824e00457e7b2.setIcon(icon_5452c0fe09db48d73b0891f322f1c643);
+            
+    
+            var marker_e3c99bdb1208fc00d31d390bb2b125de = L.marker(
+                [34.1526, 77.5771],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_536c0d1d799faa663171bab4531d623b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4d62bee4f43315ebd14824277f84aa72 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_c5eb3ac4afd6209638cf151ee9438b6d = $(`<div id="html_c5eb3ac4afd6209638cf151ee9438b6d" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Ladakh</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Service Deserts:</b> 0 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 0 children at risk<br>         <b>Total Districts:</b> 2     </div>     </div>`)[0];
+                popup_4d62bee4f43315ebd14824277f84aa72.setContent(html_c5eb3ac4afd6209638cf151ee9438b6d);
+            
+        
+
+        marker_e3c99bdb1208fc00d31d390bb2b125de.bindPopup(popup_4d62bee4f43315ebd14824277f84aa72)
+        ;
+
+        
+    
+    
+            marker_e3c99bdb1208fc00d31d390bb2b125de.bindTooltip(
+                `<div>
+                     Ladakh: 0 Service Deserts, 0 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e3c99bdb1208fc00d31d390bb2b125de.setIcon(icon_536c0d1d799faa663171bab4531d623b);
+            
+    
+            var marker_823329eaf62b157382a76e442373ad9e = L.marker(
+                [10.5667, 72.6417],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_cdad538f36af45fc6fdef85e7a2e1bac = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3447af1a33ae673cc634b1a62637d585 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_817dc2e344e9f73f58c7c4b53fa00eb9 = $(`<div id="html_817dc2e344e9f73f58c7c4b53fa00eb9" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Lakshadweep</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Service Deserts:</b> 0 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 0 children at risk<br>         <b>Total Districts:</b> 1     </div>     </div>`)[0];
+                popup_3447af1a33ae673cc634b1a62637d585.setContent(html_817dc2e344e9f73f58c7c4b53fa00eb9);
+            
+        
+
+        marker_823329eaf62b157382a76e442373ad9e.bindPopup(popup_3447af1a33ae673cc634b1a62637d585)
+        ;
+
+        
+    
+    
+            marker_823329eaf62b157382a76e442373ad9e.bindTooltip(
+                `<div>
+                     Lakshadweep: 0 Service Deserts, 0 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_823329eaf62b157382a76e442373ad9e.setIcon(icon_cdad538f36af45fc6fdef85e7a2e1bac);
+            
+    
+            var marker_c1737b36b3f5340fef1f611810367ab5 = L.marker(
+                [22.9734, 78.6569],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_c594b68c24f424c8e7d990ed20040e0f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_14694ca0237616672a596bc93e07abe5 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_65f10dd1988b223de9073291d531a05c = $(`<div id="html_65f10dd1988b223de9073291d531a05c" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Madhya Pradesh</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (3 Service Deserts)</span><br>         <b>Service Deserts:</b> 3 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 3,473 children at risk<br>         <b>Total Districts:</b> 61     </div>     </div>`)[0];
+                popup_14694ca0237616672a596bc93e07abe5.setContent(html_65f10dd1988b223de9073291d531a05c);
+            
+        
+
+        marker_c1737b36b3f5340fef1f611810367ab5.bindPopup(popup_14694ca0237616672a596bc93e07abe5)
+        ;
+
+        
+    
+    
+            marker_c1737b36b3f5340fef1f611810367ab5.bindTooltip(
+                `<div>
+                     Madhya Pradesh: 3 Service Deserts, 3,473 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c1737b36b3f5340fef1f611810367ab5.setIcon(icon_c594b68c24f424c8e7d990ed20040e0f);
+            
+    
+            var marker_0955b172f23c27322ba5151ec3cc2fb7 = L.marker(
+                [19.7515, 75.7139],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_1a1df8d79f33cfdbd1029adc94cc4157 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-triangle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f1fbadd9dd754fa953ccaa0061994db1 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_951b8939735b0706da349822c5216a8f = $(`<div id="html_951b8939735b0706da349822c5216a8f" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Maharashtra</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:red;">CRITICAL (5+ Service Deserts)</span><br>         <b>Service Deserts:</b> 5 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 573 children at risk<br>         <b>Total Districts:</b> 53     </div>     </div>`)[0];
+                popup_f1fbadd9dd754fa953ccaa0061994db1.setContent(html_951b8939735b0706da349822c5216a8f);
+            
+        
+
+        marker_0955b172f23c27322ba5151ec3cc2fb7.bindPopup(popup_f1fbadd9dd754fa953ccaa0061994db1)
+        ;
+
+        
+    
+    
+            marker_0955b172f23c27322ba5151ec3cc2fb7.bindTooltip(
+                `<div>
+                     Maharashtra: 5 Service Deserts, 573 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0955b172f23c27322ba5151ec3cc2fb7.setIcon(icon_1a1df8d79f33cfdbd1029adc94cc4157);
+            
+    
+            var marker_18b98ddae378bbac095755f5a797086a = L.marker(
+                [24.6637, 93.9063],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_c890ecd59b2fda4eb080896e80b14502 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6c3a660359ba408497242fa05b2e47a8 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_07c30f6dbf73be49ae1890a161f2613b = $(`<div id="html_07c30f6dbf73be49ae1890a161f2613b" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Manipur</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (1 Service Deserts)</span><br>         <b>Service Deserts:</b> 1 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 9 children at risk<br>         <b>Total Districts:</b> 12     </div>     </div>`)[0];
+                popup_6c3a660359ba408497242fa05b2e47a8.setContent(html_07c30f6dbf73be49ae1890a161f2613b);
+            
+        
+
+        marker_18b98ddae378bbac095755f5a797086a.bindPopup(popup_6c3a660359ba408497242fa05b2e47a8)
+        ;
+
+        
+    
+    
+            marker_18b98ddae378bbac095755f5a797086a.bindTooltip(
+                `<div>
+                     Manipur: 1 Service Deserts, 9 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_18b98ddae378bbac095755f5a797086a.setIcon(icon_c890ecd59b2fda4eb080896e80b14502);
+            
+    
+            var marker_71ec945be5f146bf3d94acd82210145c = L.marker(
+                [25.467, 91.3662],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_5197e047621a0aff839972912fddc0b6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-triangle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bd640465f496913169a612e8eb078200 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_ce05609e6e9eb7a2426380b6c85ceaec = $(`<div id="html_ce05609e6e9eb7a2426380b6c85ceaec" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Meghalaya</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:red;">CRITICAL (5+ Service Deserts)</span><br>         <b>Service Deserts:</b> 9 districts<br>         <b>Moderate Risk:</b> 4 districts<br>         <b>MBU Gap:</b> 37,953 children at risk<br>         <b>Total Districts:</b> 14     </div>     </div>`)[0];
+                popup_bd640465f496913169a612e8eb078200.setContent(html_ce05609e6e9eb7a2426380b6c85ceaec);
+            
+        
+
+        marker_71ec945be5f146bf3d94acd82210145c.bindPopup(popup_bd640465f496913169a612e8eb078200)
+        ;
+
+        
+    
+    
+            marker_71ec945be5f146bf3d94acd82210145c.bindTooltip(
+                `<div>
+                     Meghalaya: 9 Service Deserts, 37,953 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_71ec945be5f146bf3d94acd82210145c.setIcon(icon_5197e047621a0aff839972912fddc0b6);
+            
+    
+            var marker_0b639a2253112becd0013ceb7d7f4486 = L.marker(
+                [23.1645, 92.9376],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_ddd01a15478e6b819e1c55011c6c26af = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "beige",
+  "iconColor": "white",
+  "icon": "info-circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1ace429d701c936abd76cc2f2773fe18 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_9e233677757504e7670bda311e6347dd = $(`<div id="html_9e233677757504e7670bda311e6347dd" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Mizoram</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">MODERATE (1 Moderate Risk)</span><br>         <b>Service Deserts:</b> 0 districts<br>         <b>Moderate Risk:</b> 1 districts<br>         <b>MBU Gap:</b> 6 children at risk<br>         <b>Total Districts:</b> 12     </div>     </div>`)[0];
+                popup_1ace429d701c936abd76cc2f2773fe18.setContent(html_9e233677757504e7670bda311e6347dd);
+            
+        
+
+        marker_0b639a2253112becd0013ceb7d7f4486.bindPopup(popup_1ace429d701c936abd76cc2f2773fe18)
+        ;
+
+        
+    
+    
+            marker_0b639a2253112becd0013ceb7d7f4486.bindTooltip(
+                `<div>
+                     Mizoram: 0 Service Deserts, 6 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0b639a2253112becd0013ceb7d7f4486.setIcon(icon_ddd01a15478e6b819e1c55011c6c26af);
+            
+    
+            var marker_3cfb131df2e0d6beeaa09f13788dc73b = L.marker(
+                [26.1584, 94.5624],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_f6332419c2ed2e0c347f7d24134254df = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_53bafe6ebc82ddf5fbb0c8726645da61 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_11a110f5ab681df3bac309dec4499b38 = $(`<div id="html_11a110f5ab681df3bac309dec4499b38" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Nagaland</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (1 Service Deserts)</span><br>         <b>Service Deserts:</b> 1 districts<br>         <b>Moderate Risk:</b> 2 districts<br>         <b>MBU Gap:</b> 447 children at risk<br>         <b>Total Districts:</b> 17     </div>     </div>`)[0];
+                popup_53bafe6ebc82ddf5fbb0c8726645da61.setContent(html_11a110f5ab681df3bac309dec4499b38);
+            
+        
+
+        marker_3cfb131df2e0d6beeaa09f13788dc73b.bindPopup(popup_53bafe6ebc82ddf5fbb0c8726645da61)
+        ;
+
+        
+    
+    
+            marker_3cfb131df2e0d6beeaa09f13788dc73b.bindTooltip(
+                `<div>
+                     Nagaland: 1 Service Deserts, 447 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3cfb131df2e0d6beeaa09f13788dc73b.setIcon(icon_f6332419c2ed2e0c347f7d24134254df);
+            
+    
+            var marker_dd0d9a239a8007b751538cb2c9f8ccd7 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_f46be4296cf10e383c1620b9b0758fb0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a519b2e4d1a39d34282b622a4c8a9fd8 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_a9ffbcdb5232f53f0d01e0375c24e7ef = $(`<div id="html_a9ffbcdb5232f53f0d01e0375c24e7ef" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">ODISHA</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Service Deserts:</b> 0 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 0 children at risk<br>         <b>Total Districts:</b> 1     </div>     </div>`)[0];
+                popup_a519b2e4d1a39d34282b622a4c8a9fd8.setContent(html_a9ffbcdb5232f53f0d01e0375c24e7ef);
+            
+        
+
+        marker_dd0d9a239a8007b751538cb2c9f8ccd7.bindPopup(popup_a519b2e4d1a39d34282b622a4c8a9fd8)
+        ;
+
+        
+    
+    
+            marker_dd0d9a239a8007b751538cb2c9f8ccd7.bindTooltip(
+                `<div>
+                     ODISHA: 0 Service Deserts, 0 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_dd0d9a239a8007b751538cb2c9f8ccd7.setIcon(icon_f46be4296cf10e383c1620b9b0758fb0);
+            
+    
+            var marker_60bb51e5549749451cdf4e12f4e06cd2 = L.marker(
+                [20.9517, 85.0985],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_83456cb9f1f2600d0c63e8157dde3afb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e9a565926e7dca1b60d52e51e00a5440 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_326b290880bb61829895a14b3d5ea873 = $(`<div id="html_326b290880bb61829895a14b3d5ea873" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Odisha</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (4 Service Deserts)</span><br>         <b>Service Deserts:</b> 4 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 433 children at risk<br>         <b>Total Districts:</b> 47     </div>     </div>`)[0];
+                popup_e9a565926e7dca1b60d52e51e00a5440.setContent(html_326b290880bb61829895a14b3d5ea873);
+            
+        
+
+        marker_60bb51e5549749451cdf4e12f4e06cd2.bindPopup(popup_e9a565926e7dca1b60d52e51e00a5440)
+        ;
+
+        
+    
+    
+            marker_60bb51e5549749451cdf4e12f4e06cd2.bindTooltip(
+                `<div>
+                     Odisha: 4 Service Deserts, 433 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_60bb51e5549749451cdf4e12f4e06cd2.setIcon(icon_83456cb9f1f2600d0c63e8157dde3afb);
+            
+    
+            var marker_9952e1c38f6ac6c7f2b57af24a261126 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_4b9c3fd752f614e9877550b6bef2a09f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-triangle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_70ec8f3935f14fc6159428c6b065bff8 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_db690d3fd70a62101a56d9b3e13890a3 = $(`<div id="html_db690d3fd70a62101a56d9b3e13890a3" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Orissa</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:red;">CRITICAL (5+ Service Deserts)</span><br>         <b>Service Deserts:</b> 11 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 81 children at risk<br>         <b>Total Districts:</b> 38     </div>     </div>`)[0];
+                popup_70ec8f3935f14fc6159428c6b065bff8.setContent(html_db690d3fd70a62101a56d9b3e13890a3);
+            
+        
+
+        marker_9952e1c38f6ac6c7f2b57af24a261126.bindPopup(popup_70ec8f3935f14fc6159428c6b065bff8)
+        ;
+
+        
+    
+    
+            marker_9952e1c38f6ac6c7f2b57af24a261126.bindTooltip(
+                `<div>
+                     Orissa: 11 Service Deserts, 81 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9952e1c38f6ac6c7f2b57af24a261126.setIcon(icon_4b9c3fd752f614e9877550b6bef2a09f);
+            
+    
+            var marker_df3706d8f9fd3d9f12023429eeacc179 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_11766488a29b7c7f9ce181fe59bf1b74 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0a3563bfe047e02c244fb8f8067e88a6 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_9f06f72e5107fc4620f91da33f8a9c51 = $(`<div id="html_9f06f72e5107fc4620f91da33f8a9c51" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Pondicherry</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (3 Service Deserts)</span><br>         <b>Service Deserts:</b> 3 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 23 children at risk<br>         <b>Total Districts:</b> 5     </div>     </div>`)[0];
+                popup_0a3563bfe047e02c244fb8f8067e88a6.setContent(html_9f06f72e5107fc4620f91da33f8a9c51);
+            
+        
+
+        marker_df3706d8f9fd3d9f12023429eeacc179.bindPopup(popup_0a3563bfe047e02c244fb8f8067e88a6)
+        ;
+
+        
+    
+    
+            marker_df3706d8f9fd3d9f12023429eeacc179.bindTooltip(
+                `<div>
+                     Pondicherry: 3 Service Deserts, 23 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_df3706d8f9fd3d9f12023429eeacc179.setIcon(icon_11766488a29b7c7f9ce181fe59bf1b74);
+            
+    
+            var marker_3b8c82a2ee3bece36370333b47815b96 = L.marker(
+                [11.9416, 79.8083],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_f9dd4cf0c15bcafc801e813994b56ac1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8987e114c0c5e641749b7fc19b7a212b = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_1610b963ffdfbe39166168d954be6b9a = $(`<div id="html_1610b963ffdfbe39166168d954be6b9a" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Puducherry</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Service Deserts:</b> 0 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 0 children at risk<br>         <b>Total Districts:</b> 4     </div>     </div>`)[0];
+                popup_8987e114c0c5e641749b7fc19b7a212b.setContent(html_1610b963ffdfbe39166168d954be6b9a);
+            
+        
+
+        marker_3b8c82a2ee3bece36370333b47815b96.bindPopup(popup_8987e114c0c5e641749b7fc19b7a212b)
+        ;
+
+        
+    
+    
+            marker_3b8c82a2ee3bece36370333b47815b96.bindTooltip(
+                `<div>
+                     Puducherry: 0 Service Deserts, 0 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3b8c82a2ee3bece36370333b47815b96.setIcon(icon_f9dd4cf0c15bcafc801e813994b56ac1);
+            
+    
+            var marker_70bd4b3221f0d9ab44c3d733e4ebd03f = L.marker(
+                [31.1471, 75.3412],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_6b2308b18af78ab531eb19bd615071ab = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_32033d0dc96d2fbfb5094cc0f4dd3ee6 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_ce667dba17489ff6bbd6627aba0add14 = $(`<div id="html_ce667dba17489ff6bbd6627aba0add14" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Punjab</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (1 Service Deserts)</span><br>         <b>Service Deserts:</b> 1 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 670 children at risk<br>         <b>Total Districts:</b> 28     </div>     </div>`)[0];
+                popup_32033d0dc96d2fbfb5094cc0f4dd3ee6.setContent(html_ce667dba17489ff6bbd6627aba0add14);
+            
+        
+
+        marker_70bd4b3221f0d9ab44c3d733e4ebd03f.bindPopup(popup_32033d0dc96d2fbfb5094cc0f4dd3ee6)
+        ;
+
+        
+    
+    
+            marker_70bd4b3221f0d9ab44c3d733e4ebd03f.bindTooltip(
+                `<div>
+                     Punjab: 1 Service Deserts, 670 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_70bd4b3221f0d9ab44c3d733e4ebd03f.setIcon(icon_6b2308b18af78ab531eb19bd615071ab);
+            
+    
+            var marker_618be769e5ea135f7a9c1f0e5686974b = L.marker(
+                [27.0238, 74.2179],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_8ebab3d375b0e8a9757769bc2ab69920 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-triangle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3bc66aef1d79b01d26fe880ea94ac62b = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_ddae95c0cda0d464bd0e89942412ec5d = $(`<div id="html_ddae95c0cda0d464bd0e89942412ec5d" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Rajasthan</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:red;">CRITICAL (5+ Service Deserts)</span><br>         <b>Service Deserts:</b> 8 districts<br>         <b>Moderate Risk:</b> 1 districts<br>         <b>MBU Gap:</b> 553 children at risk<br>         <b>Total Districts:</b> 46     </div>     </div>`)[0];
+                popup_3bc66aef1d79b01d26fe880ea94ac62b.setContent(html_ddae95c0cda0d464bd0e89942412ec5d);
+            
+        
+
+        marker_618be769e5ea135f7a9c1f0e5686974b.bindPopup(popup_3bc66aef1d79b01d26fe880ea94ac62b)
+        ;
+
+        
+    
+    
+            marker_618be769e5ea135f7a9c1f0e5686974b.bindTooltip(
+                `<div>
+                     Rajasthan: 8 Service Deserts, 553 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_618be769e5ea135f7a9c1f0e5686974b.setIcon(icon_8ebab3d375b0e8a9757769bc2ab69920);
+            
+    
+            var marker_bc82f384d349101f0bbed7a11458a4c0 = L.marker(
+                [27.533, 88.5122],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_1c6030ff7c2ffd382258fc5bfb59dcef = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4eddcb15bc6cd1efb3da305c5c4095da = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_389833a7c3fb81d460f4de95b1a24320 = $(`<div id="html_389833a7c3fb81d460f4de95b1a24320" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Sikkim</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (2 Service Deserts)</span><br>         <b>Service Deserts:</b> 2 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 12 children at risk<br>         <b>Total Districts:</b> 10     </div>     </div>`)[0];
+                popup_4eddcb15bc6cd1efb3da305c5c4095da.setContent(html_389833a7c3fb81d460f4de95b1a24320);
+            
+        
+
+        marker_bc82f384d349101f0bbed7a11458a4c0.bindPopup(popup_4eddcb15bc6cd1efb3da305c5c4095da)
+        ;
+
+        
+    
+    
+            marker_bc82f384d349101f0bbed7a11458a4c0.bindTooltip(
+                `<div>
+                     Sikkim: 2 Service Deserts, 12 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bc82f384d349101f0bbed7a11458a4c0.setIcon(icon_1c6030ff7c2ffd382258fc5bfb59dcef);
+            
+    
+            var marker_7c1070cbf6e1e45fabc7c2f8b671ede6 = L.marker(
+                [11.1271, 78.6569],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_0e2b7829a8e9f74c273197982a3945c5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d540f42b77dd11a2b5deb875af6eeef3 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_25198e032b6f4a1c1fc28b4785c33e54 = $(`<div id="html_25198e032b6f4a1c1fc28b4785c33e54" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Tamil Nadu</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (3 Service Deserts)</span><br>         <b>Service Deserts:</b> 3 districts<br>         <b>Moderate Risk:</b> 1 districts<br>         <b>MBU Gap:</b> 368 children at risk<br>         <b>Total Districts:</b> 46     </div>     </div>`)[0];
+                popup_d540f42b77dd11a2b5deb875af6eeef3.setContent(html_25198e032b6f4a1c1fc28b4785c33e54);
+            
+        
+
+        marker_7c1070cbf6e1e45fabc7c2f8b671ede6.bindPopup(popup_d540f42b77dd11a2b5deb875af6eeef3)
+        ;
+
+        
+    
+    
+            marker_7c1070cbf6e1e45fabc7c2f8b671ede6.bindTooltip(
+                `<div>
+                     Tamil Nadu: 3 Service Deserts, 368 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7c1070cbf6e1e45fabc7c2f8b671ede6.setIcon(icon_0e2b7829a8e9f74c273197982a3945c5);
+            
+    
+            var marker_5cb631afd3e61945b2966d00c0480cee = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_fdc51e47f9643d80a2518cffe6794866 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_92064cff13eef7a4555676024d41709a = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_ca27a5c66bcbc59a0e27151c0dc1fb43 = $(`<div id="html_ca27a5c66bcbc59a0e27151c0dc1fb43" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Tamilnadu</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (1 Service Deserts)</span><br>         <b>Service Deserts:</b> 1 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 0 children at risk<br>         <b>Total Districts:</b> 1     </div>     </div>`)[0];
+                popup_92064cff13eef7a4555676024d41709a.setContent(html_ca27a5c66bcbc59a0e27151c0dc1fb43);
+            
+        
+
+        marker_5cb631afd3e61945b2966d00c0480cee.bindPopup(popup_92064cff13eef7a4555676024d41709a)
+        ;
+
+        
+    
+    
+            marker_5cb631afd3e61945b2966d00c0480cee.bindTooltip(
+                `<div>
+                     Tamilnadu: 1 Service Deserts, 0 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5cb631afd3e61945b2966d00c0480cee.setIcon(icon_fdc51e47f9643d80a2518cffe6794866);
+            
+    
+            var marker_d3d3a4d65997126edd56869951ac30c9 = L.marker(
+                [18.1124, 79.0193],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_48e226c8a493d7c4c0f0c3af17b4db0a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3b5851efea7f5b5e5e653c40b3d282d6 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_6c04ecb09c03dab2214d744d94b9c068 = $(`<div id="html_6c04ecb09c03dab2214d744d94b9c068" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Telangana</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (2 Service Deserts)</span><br>         <b>Service Deserts:</b> 2 districts<br>         <b>Moderate Risk:</b> 1 districts<br>         <b>MBU Gap:</b> 951 children at risk<br>         <b>Total Districts:</b> 42     </div>     </div>`)[0];
+                popup_3b5851efea7f5b5e5e653c40b3d282d6.setContent(html_6c04ecb09c03dab2214d744d94b9c068);
+            
+        
+
+        marker_d3d3a4d65997126edd56869951ac30c9.bindPopup(popup_3b5851efea7f5b5e5e653c40b3d282d6)
+        ;
+
+        
+    
+    
+            marker_d3d3a4d65997126edd56869951ac30c9.bindTooltip(
+                `<div>
+                     Telangana: 2 Service Deserts, 951 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d3d3a4d65997126edd56869951ac30c9.setIcon(icon_48e226c8a493d7c4c0f0c3af17b4db0a);
+            
+    
+            var marker_3cdff2007a4b12fb1b40ddcf6385b8bc = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_8506c24ff7f64cecdfc3790da7455c39 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ebbd57fb2487defbc101ce9484318c55 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_041156d9f67af8286c741639587be5b7 = $(`<div id="html_041156d9f67af8286c741639587be5b7" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">The Dadra And Nagar Haveli And Daman And Diu</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (1 Service Deserts)</span><br>         <b>Service Deserts:</b> 1 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 689 children at risk<br>         <b>Total Districts:</b> 1     </div>     </div>`)[0];
+                popup_ebbd57fb2487defbc101ce9484318c55.setContent(html_041156d9f67af8286c741639587be5b7);
+            
+        
+
+        marker_3cdff2007a4b12fb1b40ddcf6385b8bc.bindPopup(popup_ebbd57fb2487defbc101ce9484318c55)
+        ;
+
+        
+    
+    
+            marker_3cdff2007a4b12fb1b40ddcf6385b8bc.bindTooltip(
+                `<div>
+                     The Dadra And Nagar Haveli And Daman And Diu: 1 Service Deserts, 689 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3cdff2007a4b12fb1b40ddcf6385b8bc.setIcon(icon_8506c24ff7f64cecdfc3790da7455c39);
+            
+    
+            var marker_6e0efdf5310803824baa40ac8c34322e = L.marker(
+                [23.9408, 91.9882],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_656972253c8e5d22607b2355bf8e4935 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8d88d46efcd1824ede4f73e4956b6867 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_1f4e8933466d8fce27115d0aee20b766 = $(`<div id="html_1f4e8933466d8fce27115d0aee20b766" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Tripura</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Service Deserts:</b> 0 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 0 children at risk<br>         <b>Total Districts:</b> 9     </div>     </div>`)[0];
+                popup_8d88d46efcd1824ede4f73e4956b6867.setContent(html_1f4e8933466d8fce27115d0aee20b766);
+            
+        
+
+        marker_6e0efdf5310803824baa40ac8c34322e.bindPopup(popup_8d88d46efcd1824ede4f73e4956b6867)
+        ;
+
+        
+    
+    
+            marker_6e0efdf5310803824baa40ac8c34322e.bindTooltip(
+                `<div>
+                     Tripura: 0 Service Deserts, 0 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6e0efdf5310803824baa40ac8c34322e.setIcon(icon_656972253c8e5d22607b2355bf8e4935);
+            
+    
+            var marker_56182d381f65d1aaa4b8af4ba8fac353 = L.marker(
+                [26.8467, 80.9462],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_8ced1d9f45bba3a70b95ef91432f2b2a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-triangle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_38b16d2a1f05f30d5848a259ba2aec4c = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_5cab10ea27a4179273a84881f5ce4d79 = $(`<div id="html_5cab10ea27a4179273a84881f5ce4d79" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Uttar Pradesh</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:red;">CRITICAL (5+ Service Deserts)</span><br>         <b>Service Deserts:</b> 10 districts<br>         <b>Moderate Risk:</b> 2 districts<br>         <b>MBU Gap:</b> 9,949 children at risk<br>         <b>Total Districts:</b> 93     </div>     </div>`)[0];
+                popup_38b16d2a1f05f30d5848a259ba2aec4c.setContent(html_5cab10ea27a4179273a84881f5ce4d79);
+            
+        
+
+        marker_56182d381f65d1aaa4b8af4ba8fac353.bindPopup(popup_38b16d2a1f05f30d5848a259ba2aec4c)
+        ;
+
+        
+    
+    
+            marker_56182d381f65d1aaa4b8af4ba8fac353.bindTooltip(
+                `<div>
+                     Uttar Pradesh: 10 Service Deserts, 9,949 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_56182d381f65d1aaa4b8af4ba8fac353.setIcon(icon_8ced1d9f45bba3a70b95ef91432f2b2a);
+            
+    
+            var marker_61662987bd3a16d940d64e9c30e6ef69 = L.marker(
+                [30.0668, 79.0193],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_0e88407b377970e2dc817ec53bdf1b22 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "beige",
+  "iconColor": "white",
+  "icon": "info-circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8b1ee699c13aad14c099cf0f3ba8a13e = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_3d86d42be698027230a902bc7f5207e4 = $(`<div id="html_3d86d42be698027230a902bc7f5207e4" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Uttarakhand</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">MODERATE (1 Moderate Risk)</span><br>         <b>Service Deserts:</b> 0 districts<br>         <b>Moderate Risk:</b> 1 districts<br>         <b>MBU Gap:</b> 26 children at risk<br>         <b>Total Districts:</b> 15     </div>     </div>`)[0];
+                popup_8b1ee699c13aad14c099cf0f3ba8a13e.setContent(html_3d86d42be698027230a902bc7f5207e4);
+            
+        
+
+        marker_61662987bd3a16d940d64e9c30e6ef69.bindPopup(popup_8b1ee699c13aad14c099cf0f3ba8a13e)
+        ;
+
+        
+    
+    
+            marker_61662987bd3a16d940d64e9c30e6ef69.bindTooltip(
+                `<div>
+                     Uttarakhand: 0 Service Deserts, 26 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_61662987bd3a16d940d64e9c30e6ef69.setIcon(icon_0e88407b377970e2dc817ec53bdf1b22);
+            
+    
+            var marker_4cd3c3c56ea39a0e1bff93b98da221e8 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_9c4e5fc0587f8cf05d0e70e9f01153bc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_672a2c896ff8b6fa52bbe8f24562ddd5 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_8e4c5f3d11c40a1d3acd6db131913e81 = $(`<div id="html_8e4c5f3d11c40a1d3acd6db131913e81" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Uttaranchal</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (2 Service Deserts)</span><br>         <b>Service Deserts:</b> 2 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 0 children at risk<br>         <b>Total Districts:</b> 2     </div>     </div>`)[0];
+                popup_672a2c896ff8b6fa52bbe8f24562ddd5.setContent(html_8e4c5f3d11c40a1d3acd6db131913e81);
+            
+        
+
+        marker_4cd3c3c56ea39a0e1bff93b98da221e8.bindPopup(popup_672a2c896ff8b6fa52bbe8f24562ddd5)
+        ;
+
+        
+    
+    
+            marker_4cd3c3c56ea39a0e1bff93b98da221e8.bindTooltip(
+                `<div>
+                     Uttaranchal: 2 Service Deserts, 0 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4cd3c3c56ea39a0e1bff93b98da221e8.setIcon(icon_9c4e5fc0587f8cf05d0e70e9f01153bc);
+            
+    
+            var marker_bfbab193af1fb8b8d5a4cd623064368c = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_8bcf6e811e27382b584d7ce3b8f55dfb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5cbe5c0f20320e41e7d186c28d58fbad = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_fa69c482a55255c4285a4a956a73ceee = $(`<div id="html_fa69c482a55255c4285a4a956a73ceee" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">WEST BENGAL</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (3 Service Deserts)</span><br>         <b>Service Deserts:</b> 3 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 3 children at risk<br>         <b>Total Districts:</b> 3     </div>     </div>`)[0];
+                popup_5cbe5c0f20320e41e7d186c28d58fbad.setContent(html_fa69c482a55255c4285a4a956a73ceee);
+            
+        
+
+        marker_bfbab193af1fb8b8d5a4cd623064368c.bindPopup(popup_5cbe5c0f20320e41e7d186c28d58fbad)
+        ;
+
+        
+    
+    
+            marker_bfbab193af1fb8b8d5a4cd623064368c.bindTooltip(
+                `<div>
+                     WEST BENGAL: 3 Service Deserts, 3 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bfbab193af1fb8b8d5a4cd623064368c.setIcon(icon_8bcf6e811e27382b584d7ce3b8f55dfb);
+            
+    
+            var marker_0f852df169c07fedfc217ec9de73920b = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_c590539af6840a7f5139d284f066c8b2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cbafe7f16c586d7993357eb8c692054a = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_802490bfe274c79ac126cdce90ab65c3 = $(`<div id="html_802490bfe274c79ac126cdce90ab65c3" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">WESTBENGAL</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Service Deserts:</b> 0 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 0 children at risk<br>         <b>Total Districts:</b> 1     </div>     </div>`)[0];
+                popup_cbafe7f16c586d7993357eb8c692054a.setContent(html_802490bfe274c79ac126cdce90ab65c3);
+            
+        
+
+        marker_0f852df169c07fedfc217ec9de73920b.bindPopup(popup_cbafe7f16c586d7993357eb8c692054a)
+        ;
+
+        
+    
+    
+            marker_0f852df169c07fedfc217ec9de73920b.bindTooltip(
+                `<div>
+                     WESTBENGAL: 0 Service Deserts, 0 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0f852df169c07fedfc217ec9de73920b.setIcon(icon_c590539af6840a7f5139d284f066c8b2);
+            
+    
+            var marker_fc37cc0b3a6738ac2bbf46b75b201924 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_2abfb1433d10ed9c1fd0240da9b9f606 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b6150a0507eaf877eab54f7d9c7d2673 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_9dde9f8dcd8ce0934c1e47350c47ab35 = $(`<div id="html_9dde9f8dcd8ce0934c1e47350c47ab35" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">West  Bengal</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (1 Service Deserts)</span><br>         <b>Service Deserts:</b> 1 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 9 children at risk<br>         <b>Total Districts:</b> 1     </div>     </div>`)[0];
+                popup_b6150a0507eaf877eab54f7d9c7d2673.setContent(html_9dde9f8dcd8ce0934c1e47350c47ab35);
+            
+        
+
+        marker_fc37cc0b3a6738ac2bbf46b75b201924.bindPopup(popup_b6150a0507eaf877eab54f7d9c7d2673)
+        ;
+
+        
+    
+    
+            marker_fc37cc0b3a6738ac2bbf46b75b201924.bindTooltip(
+                `<div>
+                     West  Bengal: 1 Service Deserts, 9 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fc37cc0b3a6738ac2bbf46b75b201924.setIcon(icon_2abfb1433d10ed9c1fd0240da9b9f606);
+            
+    
+            var marker_6315f8566cd41fc6ce9a0297599be13c = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_67bd6342e068fd3d9f0bf467ab44d2ba = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_824018163ae642c6fdb66461b1c154d7 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_d44a15dd6541eaf33d707a99d68861b8 = $(`<div id="html_d44a15dd6541eaf33d707a99d68861b8" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">West Bangal</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (1 Service Deserts)</span><br>         <b>Service Deserts:</b> 1 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 0 children at risk<br>         <b>Total Districts:</b> 3     </div>     </div>`)[0];
+                popup_824018163ae642c6fdb66461b1c154d7.setContent(html_d44a15dd6541eaf33d707a99d68861b8);
+            
+        
+
+        marker_6315f8566cd41fc6ce9a0297599be13c.bindPopup(popup_824018163ae642c6fdb66461b1c154d7)
+        ;
+
+        
+    
+    
+            marker_6315f8566cd41fc6ce9a0297599be13c.bindTooltip(
+                `<div>
+                     West Bangal: 1 Service Deserts, 0 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6315f8566cd41fc6ce9a0297599be13c.setIcon(icon_67bd6342e068fd3d9f0bf467ab44d2ba);
+            
+    
+            var marker_6f89154ef2b6c8376063c04175a08bd3 = L.marker(
+                [22.9868, 87.855],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_1d3e6cace88bc00978de86e1697c34bd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-triangle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cd24e7c5062819660bb7476a43f3677d = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_9671b3f5674705cb8f59997a1d056149 = $(`<div id="html_9671b3f5674705cb8f59997a1d056149" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">West Bengal</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:red;">CRITICAL (5+ Service Deserts)</span><br>         <b>Service Deserts:</b> 17 districts<br>         <b>Moderate Risk:</b> 8 districts<br>         <b>MBU Gap:</b> 24,321 children at risk<br>         <b>Total Districts:</b> 64     </div>     </div>`)[0];
+                popup_cd24e7c5062819660bb7476a43f3677d.setContent(html_9671b3f5674705cb8f59997a1d056149);
+            
+        
+
+        marker_6f89154ef2b6c8376063c04175a08bd3.bindPopup(popup_cd24e7c5062819660bb7476a43f3677d)
+        ;
+
+        
+    
+    
+            marker_6f89154ef2b6c8376063c04175a08bd3.bindTooltip(
+                `<div>
+                     West Bengal: 17 Service Deserts, 24,321 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6f89154ef2b6c8376063c04175a08bd3.setIcon(icon_1d3e6cace88bc00978de86e1697c34bd);
+            
+    
+            var marker_83d8a5a4ef946771b5d2b983ba70c786 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_533c043844cb1d177711b07b0fe9fc5f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a280049d3b50bc0fc5980a9258f9e6cb = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_fd7976fbbbe274d3d943ee619cbc929f = $(`<div id="html_fd7976fbbbe274d3d943ee619cbc929f" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">West bengal</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (2 Service Deserts)</span><br>         <b>Service Deserts:</b> 2 districts<br>         <b>Moderate Risk:</b> 1 districts<br>         <b>MBU Gap:</b> 2 children at risk<br>         <b>Total Districts:</b> 3     </div>     </div>`)[0];
+                popup_a280049d3b50bc0fc5980a9258f9e6cb.setContent(html_fd7976fbbbe274d3d943ee619cbc929f);
+            
+        
+
+        marker_83d8a5a4ef946771b5d2b983ba70c786.bindPopup(popup_a280049d3b50bc0fc5980a9258f9e6cb)
+        ;
+
+        
+    
+    
+            marker_83d8a5a4ef946771b5d2b983ba70c786.bindTooltip(
+                `<div>
+                     West bengal: 2 Service Deserts, 2 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_83d8a5a4ef946771b5d2b983ba70c786.setIcon(icon_533c043844cb1d177711b07b0fe9fc5f);
+            
+    
+            var marker_1cf8e0cebad25a560227eaf88d2c4cc7 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_7a04fa7b888282f64bb2f7540b17c421 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5b1a1d1aa84320bd724d2c4b174cc31b = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_196a095df4aa71818029df562e590211 = $(`<div id="html_196a095df4aa71818029df562e590211" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">Westbengal</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (2 Service Deserts)</span><br>         <b>Service Deserts:</b> 2 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 4 children at risk<br>         <b>Total Districts:</b> 2     </div>     </div>`)[0];
+                popup_5b1a1d1aa84320bd724d2c4b174cc31b.setContent(html_196a095df4aa71818029df562e590211);
+            
+        
+
+        marker_1cf8e0cebad25a560227eaf88d2c4cc7.bindPopup(popup_5b1a1d1aa84320bd724d2c4b174cc31b)
+        ;
+
+        
+    
+    
+            marker_1cf8e0cebad25a560227eaf88d2c4cc7.bindTooltip(
+                `<div>
+                     Westbengal: 2 Service Deserts, 4 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1cf8e0cebad25a560227eaf88d2c4cc7.setIcon(icon_7a04fa7b888282f64bb2f7540b17c421);
+            
+    
+            var marker_3331285e5fa32c34d54d5b295a8fe53f = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_8c3986faa6e9e524146b98bc18bb97aa = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e1f5d52494735c2177f2be40be141f85 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_0e6ebe07215a98a9bafe4c2b1f11d8ef = $(`<div id="html_0e6ebe07215a98a9bafe4c2b1f11d8ef" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">andhra pradesh</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Service Deserts:</b> 0 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 0 children at risk<br>         <b>Total Districts:</b> 2     </div>     </div>`)[0];
+                popup_e1f5d52494735c2177f2be40be141f85.setContent(html_0e6ebe07215a98a9bafe4c2b1f11d8ef);
+            
+        
+
+        marker_3331285e5fa32c34d54d5b295a8fe53f.bindPopup(popup_e1f5d52494735c2177f2be40be141f85)
+        ;
+
+        
+    
+    
+            marker_3331285e5fa32c34d54d5b295a8fe53f.bindTooltip(
+                `<div>
+                     andhra pradesh: 0 Service Deserts, 0 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3331285e5fa32c34d54d5b295a8fe53f.setIcon(icon_8c3986faa6e9e524146b98bc18bb97aa);
+            
+    
+            var marker_4ba92163f158cb94c835979af001212d = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_59954d99ba24297492e5c18c1d8cb59a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c2f636fd99a374c939092eb1766456d0 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_392b4a7e7c0dac298b2eb84dedd4607d = $(`<div id="html_392b4a7e7c0dac298b2eb84dedd4607d" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">odisha</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (1 Service Deserts)</span><br>         <b>Service Deserts:</b> 1 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 0 children at risk<br>         <b>Total Districts:</b> 1     </div>     </div>`)[0];
+                popup_c2f636fd99a374c939092eb1766456d0.setContent(html_392b4a7e7c0dac298b2eb84dedd4607d);
+            
+        
+
+        marker_4ba92163f158cb94c835979af001212d.bindPopup(popup_c2f636fd99a374c939092eb1766456d0)
+        ;
+
+        
+    
+    
+            marker_4ba92163f158cb94c835979af001212d.bindTooltip(
+                `<div>
+                     odisha: 1 Service Deserts, 0 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4ba92163f158cb94c835979af001212d.setIcon(icon_59954d99ba24297492e5c18c1d8cb59a);
+            
+    
+            var marker_4f83a20727a8dafc40b48dce3edaa819 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_2c6160a0d8498ba18e7e0603505ca25b);
+        
+    
+            var icon_69b57a9ea55016f02108d837cdb6ce7d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5f9038ed9ad947e54f1dcaad0f93bbce = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_298da06f041d2a69ad1bf8868d574eab = $(`<div id="html_298da06f041d2a69ad1bf8868d574eab" style="width: 100.0%; height: 100.0%;">     <div style="width:220px;">         <h4 style="margin-bottom:5px;">west Bengal</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK (1 Service Deserts)</span><br>         <b>Service Deserts:</b> 1 districts<br>         <b>Moderate Risk:</b> 0 districts<br>         <b>MBU Gap:</b> 0 children at risk<br>         <b>Total Districts:</b> 1     </div>     </div>`)[0];
+                popup_5f9038ed9ad947e54f1dcaad0f93bbce.setContent(html_298da06f041d2a69ad1bf8868d574eab);
+            
+        
+
+        marker_4f83a20727a8dafc40b48dce3edaa819.bindPopup(popup_5f9038ed9ad947e54f1dcaad0f93bbce)
+        ;
+
+        
+    
+    
+            marker_4f83a20727a8dafc40b48dce3edaa819.bindTooltip(
+                `<div>
+                     west Bengal: 1 Service Deserts, 0 at risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4f83a20727a8dafc40b48dce3edaa819.setIcon(icon_69b57a9ea55016f02108d837cdb6ce7d);
+            
+</script>
+</html>
