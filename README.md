@@ -358,9 +358,11 @@ Our analysis generates **8 interactive visualizations** for the hackathon submis
 > 📁 All visualizations are also available as interactive HTML files in `analysis_outputs/`
 
 ### 🗺️ Interactive Service Desert Map
-<img height="600" alt="image" src="https://github.com/user-attachments/assets/ac8366b4-9e67-4a4c-baa5-398eddad0b4f" />
+<a href="https://stiwarts.github.io/UIDAI_DH_2k26/" target="_blank">
+<img height="600" alt="Interactive Service Desert Map - Click to explore" src="https://github.com/user-attachments/assets/ac8366b4-9e67-4a4c-baa5-398eddad0b4f" />
+</a>
 
-> **🔗 [Click here to view the Interactive India Map](https://stiwarts.github.io/UIDAI_DH_2k26/)**
+> **🔗 [Click the map above or here to view the Interactive India Map](https://stiwarts.github.io/UIDAI_DH_2k26/)**
 
 Explore the **Folium-powered geospatial visualization** showing Service Desert districts across India:
 - 🔴 **Red markers** = Service Desert districts (< 50% compliance)
