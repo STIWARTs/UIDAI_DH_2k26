@@ -159,7 +159,7 @@ We built an intelligent system that identifies **"Ghost Cohorts"** — children 
 
 ---
 
-## 🚀 Deep Learning Edition (NEW!)
+## 🚀 Deep Learning Edition
 
 > **Branch:** `deep-learning` | **Notebook:** `MBU_Gap_Analyzer_DeepLearning.ipynb`
 
