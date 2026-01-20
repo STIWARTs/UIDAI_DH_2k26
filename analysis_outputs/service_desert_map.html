@@ -1,0 +1,2996 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_7555b53dee0f475de28dfabb910943b1 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<h3 style="position:fixed; top:10px; left:50px; z-index:9999; 
+    background-color:white; padding:10px; border-radius:5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
+    MBU Service Desert Map - UIDAI Hackathon 2026
+</h3>
+    
+<div style="position:fixed; bottom:50px; left:50px; z-index:9999;
+    background-color:white; padding:15px; border-radius:5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
+    <h4 style="margin:0 0 10px 0;">Legend</h4>
+    <i class="fa fa-map-marker" style="color:red;"></i> Service Desert (&lt;50%)<br>
+    <i class="fa fa-map-marker" style="color:orange;"></i> At Risk (50-80%)<br>
+    <i class="fa fa-map-marker" style="color:green;"></i> Compliant (&gt;80%)
+</div>
+    
+            <div class="folium-map" id="map_7555b53dee0f475de28dfabb910943b1" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_7555b53dee0f475de28dfabb910943b1 = L.map(
+                "map_7555b53dee0f475de28dfabb910943b1",
+                {
+                    center: [20.5937, 78.9629],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_ed189d9d31a921399a3bc4ddb289ef65 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_ed189d9d31a921399a3bc4ddb289ef65.addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var marker_886f23f90f9ee51b7527a63b3b9f6627 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_f32117ccdf6d5e5baa4b5fdd5b6fea29 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-triangle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c6123ae6a32a2ee2c10570d0b2970e30 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6a94ae7f80abaeb634706b47879ac428 = $(`<div id="html_6a94ae7f80abaeb634706b47879ac428" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">100000</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:red;">SERVICE DESERT</span><br>         <b>Compliance:</b> 0.0%<br>         <b>MBU Gap:</b> 1<br>         <b>Eligible:</b> 1     </div>     </div>`)[0];
+                popup_c6123ae6a32a2ee2c10570d0b2970e30.setContent(html_6a94ae7f80abaeb634706b47879ac428);
+            
+        
+
+        marker_886f23f90f9ee51b7527a63b3b9f6627.bindPopup(popup_c6123ae6a32a2ee2c10570d0b2970e30)
+        ;
+
+        
+    
+    
+            marker_886f23f90f9ee51b7527a63b3b9f6627.bindTooltip(
+                `<div>
+                     100000: 0.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_886f23f90f9ee51b7527a63b3b9f6627.setIcon(icon_f32117ccdf6d5e5baa4b5fdd5b6fea29);
+            
+    
+            var marker_375fac69fd957b489b485255c2253a78 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_bae8852e6e34020fc38cd159b15d2d7b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f959a7c40c1e0013947a78000d77cf2a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f5278ee511911877523fef9a2ae90d26 = $(`<div id="html_f5278ee511911877523fef9a2ae90d26" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Andaman & Nicobar Islands</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 0<br>         <b>Eligible:</b> 114     </div>     </div>`)[0];
+                popup_f959a7c40c1e0013947a78000d77cf2a.setContent(html_f5278ee511911877523fef9a2ae90d26);
+            
+        
+
+        marker_375fac69fd957b489b485255c2253a78.bindPopup(popup_f959a7c40c1e0013947a78000d77cf2a)
+        ;
+
+        
+    
+    
+            marker_375fac69fd957b489b485255c2253a78.bindTooltip(
+                `<div>
+                     Andaman & Nicobar Islands: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_375fac69fd957b489b485255c2253a78.setIcon(icon_bae8852e6e34020fc38cd159b15d2d7b);
+            
+    
+            var marker_ca0be7cb71e74cdb71036c3e33318a07 = L.marker(
+                [11.7401, 92.6586],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_1d4d18d3ac3be5f52d38fb9163b868e1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f44694df8099e1d545ffafabb400971d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2f488280f4cf01fa2f303675b468fc90 = $(`<div id="html_2f488280f4cf01fa2f303675b468fc90" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Andaman and Nicobar Islands</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 0<br>         <b>Eligible:</b> 397     </div>     </div>`)[0];
+                popup_f44694df8099e1d545ffafabb400971d.setContent(html_2f488280f4cf01fa2f303675b468fc90);
+            
+        
+
+        marker_ca0be7cb71e74cdb71036c3e33318a07.bindPopup(popup_f44694df8099e1d545ffafabb400971d)
+        ;
+
+        
+    
+    
+            marker_ca0be7cb71e74cdb71036c3e33318a07.bindTooltip(
+                `<div>
+                     Andaman and Nicobar Islands: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ca0be7cb71e74cdb71036c3e33318a07.setIcon(icon_1d4d18d3ac3be5f52d38fb9163b868e1);
+            
+    
+            var marker_9eaaf2a4f9b745125a89fb700ddc3ad0 = L.marker(
+                [15.9129, 79.74],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_3a7d7978b6d1689d60aa6e9b4acb7f74 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8b4dbc5d8bb602df7688ccd95472f8ad = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_bb30c205082d06985302b25045749fe3 = $(`<div id="html_bb30c205082d06985302b25045749fe3" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Andhra Pradesh</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 2,783<br>         <b>Eligible:</b> 126,186     </div>     </div>`)[0];
+                popup_8b4dbc5d8bb602df7688ccd95472f8ad.setContent(html_bb30c205082d06985302b25045749fe3);
+            
+        
+
+        marker_9eaaf2a4f9b745125a89fb700ddc3ad0.bindPopup(popup_8b4dbc5d8bb602df7688ccd95472f8ad)
+        ;
+
+        
+    
+    
+            marker_9eaaf2a4f9b745125a89fb700ddc3ad0.bindTooltip(
+                `<div>
+                     Andhra Pradesh: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9eaaf2a4f9b745125a89fb700ddc3ad0.setIcon(icon_3a7d7978b6d1689d60aa6e9b4acb7f74);
+            
+    
+            var marker_ca1d24473d9ee980a6e26bf7f256e46e = L.marker(
+                [27.0844, 93.6053],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_1c747bd6fc77643ee31d32b9272d215c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5ff1093cb8c519cc6004e3d1d82af588 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_92d3c7d2abb53e2581ef3b20bae87fb3 = $(`<div id="html_92d3c7d2abb53e2581ef3b20bae87fb3" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Arunachal Pradesh</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 0<br>         <b>Eligible:</b> 4,193     </div>     </div>`)[0];
+                popup_5ff1093cb8c519cc6004e3d1d82af588.setContent(html_92d3c7d2abb53e2581ef3b20bae87fb3);
+            
+        
+
+        marker_ca1d24473d9ee980a6e26bf7f256e46e.bindPopup(popup_5ff1093cb8c519cc6004e3d1d82af588)
+        ;
+
+        
+    
+    
+            marker_ca1d24473d9ee980a6e26bf7f256e46e.bindTooltip(
+                `<div>
+                     Arunachal Pradesh: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ca1d24473d9ee980a6e26bf7f256e46e.setIcon(icon_1c747bd6fc77643ee31d32b9272d215c);
+            
+    
+            var marker_2c4f2e34712e57b77104400dc0393e56 = L.marker(
+                [26.2006, 92.9376],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_f58aa5fa44a113f25ce1c91128818911 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_723c2c46c9147b7b4e0591930825146d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_89c756ea785a9f0e9a9adfd999b11653 = $(`<div id="html_89c756ea785a9f0e9a9adfd999b11653" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Assam</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 996<br>         <b>Eligible:</b> 207,320     </div>     </div>`)[0];
+                popup_723c2c46c9147b7b4e0591930825146d.setContent(html_89c756ea785a9f0e9a9adfd999b11653);
+            
+        
+
+        marker_2c4f2e34712e57b77104400dc0393e56.bindPopup(popup_723c2c46c9147b7b4e0591930825146d)
+        ;
+
+        
+    
+    
+            marker_2c4f2e34712e57b77104400dc0393e56.bindTooltip(
+                `<div>
+                     Assam: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2c4f2e34712e57b77104400dc0393e56.setIcon(icon_f58aa5fa44a113f25ce1c91128818911);
+            
+    
+            var marker_d673c3d52b172844cfa6f258537f134a = L.marker(
+                [25.0961, 85.3131],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_79f794b7424224b77bea7b312a7958c5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_52007f428ba1fbcd3f079b0e665963e9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3141ae1a6e64fe9c308cf5c43423a2c6 = $(`<div id="html_3141ae1a6e64fe9c308cf5c43423a2c6" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Bihar</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 30,170<br>         <b>Eligible:</b> 597,677     </div>     </div>`)[0];
+                popup_52007f428ba1fbcd3f079b0e665963e9.setContent(html_3141ae1a6e64fe9c308cf5c43423a2c6);
+            
+        
+
+        marker_d673c3d52b172844cfa6f258537f134a.bindPopup(popup_52007f428ba1fbcd3f079b0e665963e9)
+        ;
+
+        
+    
+    
+            marker_d673c3d52b172844cfa6f258537f134a.bindTooltip(
+                `<div>
+                     Bihar: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d673c3d52b172844cfa6f258537f134a.setIcon(icon_79f794b7424224b77bea7b312a7958c5);
+            
+    
+            var marker_9f9e92b87dadd7d40b1bd666f3efeb0d = L.marker(
+                [30.7333, 76.7794],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_e2779ae5d82242c9b8c9974937e021c3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3ccd7ecbed618b1c6547f3944fba0f51 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_129b386d1ca1dc35af7320a4930c2ec0 = $(`<div id="html_129b386d1ca1dc35af7320a4930c2ec0" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Chandigarh</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 0<br>         <b>Eligible:</b> 2,687     </div>     </div>`)[0];
+                popup_3ccd7ecbed618b1c6547f3944fba0f51.setContent(html_129b386d1ca1dc35af7320a4930c2ec0);
+            
+        
+
+        marker_9f9e92b87dadd7d40b1bd666f3efeb0d.bindPopup(popup_3ccd7ecbed618b1c6547f3944fba0f51)
+        ;
+
+        
+    
+    
+            marker_9f9e92b87dadd7d40b1bd666f3efeb0d.bindTooltip(
+                `<div>
+                     Chandigarh: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9f9e92b87dadd7d40b1bd666f3efeb0d.setIcon(icon_e2779ae5d82242c9b8c9974937e021c3);
+            
+    
+            var marker_72012677bca94df31117d80de70fd626 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_d3e29e8327792a402bdb364b64047c8d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-triangle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e424a05387a55055269ce6eb3416c379 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3f4c76cea3610b9db8785350ba2be9f7 = $(`<div id="html_3f4c76cea3610b9db8785350ba2be9f7" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Chhatisgarh</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:red;">SERVICE DESERT</span><br>         <b>Compliance:</b> 0.0%<br>         <b>MBU Gap:</b> 0<br>         <b>Eligible:</b> 0     </div>     </div>`)[0];
+                popup_e424a05387a55055269ce6eb3416c379.setContent(html_3f4c76cea3610b9db8785350ba2be9f7);
+            
+        
+
+        marker_72012677bca94df31117d80de70fd626.bindPopup(popup_e424a05387a55055269ce6eb3416c379)
+        ;
+
+        
+    
+    
+            marker_72012677bca94df31117d80de70fd626.bindTooltip(
+                `<div>
+                     Chhatisgarh: 0.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_72012677bca94df31117d80de70fd626.setIcon(icon_d3e29e8327792a402bdb364b64047c8d);
+            
+    
+            var marker_09ae198efc3fffcaf2c96d00ad299a1e = L.marker(
+                [21.2787, 81.8661],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_45a39967993ad2014641bcdc110642b4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d22e9fcb16c44826978907e882b2af38 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9b419474db9a0fc55c70632fe04a5733 = $(`<div id="html_9b419474db9a0fc55c70632fe04a5733" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Chhattisgarh</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 1,377<br>         <b>Eligible:</b> 101,222     </div>     </div>`)[0];
+                popup_d22e9fcb16c44826978907e882b2af38.setContent(html_9b419474db9a0fc55c70632fe04a5733);
+            
+        
+
+        marker_09ae198efc3fffcaf2c96d00ad299a1e.bindPopup(popup_d22e9fcb16c44826978907e882b2af38)
+        ;
+
+        
+    
+    
+            marker_09ae198efc3fffcaf2c96d00ad299a1e.bindTooltip(
+                `<div>
+                     Chhattisgarh: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_09ae198efc3fffcaf2c96d00ad299a1e.setIcon(icon_45a39967993ad2014641bcdc110642b4);
+            
+    
+            var marker_5ae60d7c5f6cb34e8aa250e8080424ee = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_4c512baf1155c0d940a8d172b5a6d01e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_00076a4887b80076847c4c2bb4408652 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_51ca834b89fcea13038254f72f5298b5 = $(`<div id="html_51ca834b89fcea13038254f72f5298b5" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Dadra & Nagar Haveli</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 0<br>         <b>Eligible:</b> 25     </div>     </div>`)[0];
+                popup_00076a4887b80076847c4c2bb4408652.setContent(html_51ca834b89fcea13038254f72f5298b5);
+            
+        
+
+        marker_5ae60d7c5f6cb34e8aa250e8080424ee.bindPopup(popup_00076a4887b80076847c4c2bb4408652)
+        ;
+
+        
+    
+    
+            marker_5ae60d7c5f6cb34e8aa250e8080424ee.bindTooltip(
+                `<div>
+                     Dadra & Nagar Haveli: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5ae60d7c5f6cb34e8aa250e8080424ee.setIcon(icon_4c512baf1155c0d940a8d172b5a6d01e);
+            
+    
+            var marker_1889b34e6171f4d889d492d78e018c39 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_e370122be498ccb0f814631d7066065c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_62b2410eb33c9b20874d0ca9d7e8b783 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_693dbabea64a40113f51d991ab794bf1 = $(`<div id="html_693dbabea64a40113f51d991ab794bf1" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Dadra and Nagar Haveli</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 0<br>         <b>Eligible:</b> 740     </div>     </div>`)[0];
+                popup_62b2410eb33c9b20874d0ca9d7e8b783.setContent(html_693dbabea64a40113f51d991ab794bf1);
+            
+        
+
+        marker_1889b34e6171f4d889d492d78e018c39.bindPopup(popup_62b2410eb33c9b20874d0ca9d7e8b783)
+        ;
+
+        
+    
+    
+            marker_1889b34e6171f4d889d492d78e018c39.bindTooltip(
+                `<div>
+                     Dadra and Nagar Haveli: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1889b34e6171f4d889d492d78e018c39.setIcon(icon_e370122be498ccb0f814631d7066065c);
+            
+    
+            var marker_353c0113a057e945b1de0b3991dc2871 = L.marker(
+                [20.1809, 73.0169],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_9f31d3d2ff6077e2a11c82a0f6c2986b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2693acd2a45b2e508e7bf3314c414b11 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9aeafbc621d2a79c5b9a5ac67f6110b1 = $(`<div id="html_9aeafbc621d2a79c5b9a5ac67f6110b1" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Dadra and Nagar Haveli and Daman and Diu</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 5<br>         <b>Eligible:</b> 152     </div>     </div>`)[0];
+                popup_2693acd2a45b2e508e7bf3314c414b11.setContent(html_9aeafbc621d2a79c5b9a5ac67f6110b1);
+            
+        
+
+        marker_353c0113a057e945b1de0b3991dc2871.bindPopup(popup_2693acd2a45b2e508e7bf3314c414b11)
+        ;
+
+        
+    
+    
+            marker_353c0113a057e945b1de0b3991dc2871.bindTooltip(
+                `<div>
+                     Dadra and Nagar Haveli and Daman and Diu: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_353c0113a057e945b1de0b3991dc2871.setIcon(icon_9f31d3d2ff6077e2a11c82a0f6c2986b);
+            
+    
+            var marker_7e70fbd9b76863cb78c0b0c76d96aea9 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_b5468b388e24c2a31b6e2edd622b71e7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_28274ba07318dd190d50dbbcf4cfeafe = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_fe61082ef5d5ffa5ca1ddebc88bfac0e = $(`<div id="html_fe61082ef5d5ffa5ca1ddebc88bfac0e" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Daman & Diu</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 0<br>         <b>Eligible:</b> 21     </div>     </div>`)[0];
+                popup_28274ba07318dd190d50dbbcf4cfeafe.setContent(html_fe61082ef5d5ffa5ca1ddebc88bfac0e);
+            
+        
+
+        marker_7e70fbd9b76863cb78c0b0c76d96aea9.bindPopup(popup_28274ba07318dd190d50dbbcf4cfeafe)
+        ;
+
+        
+    
+    
+            marker_7e70fbd9b76863cb78c0b0c76d96aea9.bindTooltip(
+                `<div>
+                     Daman & Diu: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7e70fbd9b76863cb78c0b0c76d96aea9.setIcon(icon_b5468b388e24c2a31b6e2edd622b71e7);
+            
+    
+            var marker_4d4db78b8ce685960debf1c230767374 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_f73dc6da8b96c631e7184f687235ba7e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cf09bda1311cd2a377ddca51fb70d2b2 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2de39a1d5a47028b7ee18d5a1db37494 = $(`<div id="html_2de39a1d5a47028b7ee18d5a1db37494" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Daman and Diu</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 0<br>         <b>Eligible:</b> 120     </div>     </div>`)[0];
+                popup_cf09bda1311cd2a377ddca51fb70d2b2.setContent(html_2de39a1d5a47028b7ee18d5a1db37494);
+            
+        
+
+        marker_4d4db78b8ce685960debf1c230767374.bindPopup(popup_cf09bda1311cd2a377ddca51fb70d2b2)
+        ;
+
+        
+    
+    
+            marker_4d4db78b8ce685960debf1c230767374.bindTooltip(
+                `<div>
+                     Daman and Diu: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4d4db78b8ce685960debf1c230767374.setIcon(icon_f73dc6da8b96c631e7184f687235ba7e);
+            
+    
+            var marker_33d11cf798f5f6b5d357ae10a1ec35b3 = L.marker(
+                [28.7041, 77.1025],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_d47390da1edfec50944f2901a586f482 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f2095aef98cd608a1ef5e193a5db8ff1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_769f4b794882e0713c4b42f41fd01975 = $(`<div id="html_769f4b794882e0713c4b42f41fd01975" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Delhi</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 2<br>         <b>Eligible:</b> 91,479     </div>     </div>`)[0];
+                popup_f2095aef98cd608a1ef5e193a5db8ff1.setContent(html_769f4b794882e0713c4b42f41fd01975);
+            
+        
+
+        marker_33d11cf798f5f6b5d357ae10a1ec35b3.bindPopup(popup_f2095aef98cd608a1ef5e193a5db8ff1)
+        ;
+
+        
+    
+    
+            marker_33d11cf798f5f6b5d357ae10a1ec35b3.bindTooltip(
+                `<div>
+                     Delhi: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_33d11cf798f5f6b5d357ae10a1ec35b3.setIcon(icon_d47390da1edfec50944f2901a586f482);
+            
+    
+            var marker_a6f1262eb7192c63f54d17af1225afc5 = L.marker(
+                [15.2993, 74.124],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_5b4b502bc3e27f09f9472e516c8ce5c4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f77800f55b6821140e77b1fa1acb1541 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e045576f637f82178b6a35be54e07ac4 = $(`<div id="html_e045576f637f82178b6a35be54e07ac4" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Goa</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 0<br>         <b>Eligible:</b> 2,170     </div>     </div>`)[0];
+                popup_f77800f55b6821140e77b1fa1acb1541.setContent(html_e045576f637f82178b6a35be54e07ac4);
+            
+        
+
+        marker_a6f1262eb7192c63f54d17af1225afc5.bindPopup(popup_f77800f55b6821140e77b1fa1acb1541)
+        ;
+
+        
+    
+    
+            marker_a6f1262eb7192c63f54d17af1225afc5.bindTooltip(
+                `<div>
+                     Goa: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a6f1262eb7192c63f54d17af1225afc5.setIcon(icon_5b4b502bc3e27f09f9472e516c8ce5c4);
+            
+    
+            var marker_36c51eb9fcd0bf0f72888134c3ef0a05 = L.marker(
+                [22.2587, 71.1924],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_a7230b6ab6b4a8a0e2c72f5fc1fa0011 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a4e589beaa32e5bd464e78c01c6f812d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_68e5ce27e8e6bdf08c14e5bc2964b251 = $(`<div id="html_68e5ce27e8e6bdf08c14e5bc2964b251" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Gujarat</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 33,820<br>         <b>Eligible:</b> 264,213     </div>     </div>`)[0];
+                popup_a4e589beaa32e5bd464e78c01c6f812d.setContent(html_68e5ce27e8e6bdf08c14e5bc2964b251);
+            
+        
+
+        marker_36c51eb9fcd0bf0f72888134c3ef0a05.bindPopup(popup_a4e589beaa32e5bd464e78c01c6f812d)
+        ;
+
+        
+    
+    
+            marker_36c51eb9fcd0bf0f72888134c3ef0a05.bindTooltip(
+                `<div>
+                     Gujarat: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_36c51eb9fcd0bf0f72888134c3ef0a05.setIcon(icon_a7230b6ab6b4a8a0e2c72f5fc1fa0011);
+            
+    
+            var marker_bc7a3f400ac639aabd5c47ebfbf85180 = L.marker(
+                [29.0588, 76.0856],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_6b76e77bff81eca6d347fb4ae1020a52 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_69da6cd8af44c227d2078b06695ef503 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e1d726e177182fc158d62eb149f09577 = $(`<div id="html_e1d726e177182fc158d62eb149f09577" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Haryana</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 3,894<br>         <b>Eligible:</b> 97,152     </div>     </div>`)[0];
+                popup_69da6cd8af44c227d2078b06695ef503.setContent(html_e1d726e177182fc158d62eb149f09577);
+            
+        
+
+        marker_bc7a3f400ac639aabd5c47ebfbf85180.bindPopup(popup_69da6cd8af44c227d2078b06695ef503)
+        ;
+
+        
+    
+    
+            marker_bc7a3f400ac639aabd5c47ebfbf85180.bindTooltip(
+                `<div>
+                     Haryana: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bc7a3f400ac639aabd5c47ebfbf85180.setIcon(icon_6b76e77bff81eca6d347fb4ae1020a52);
+            
+    
+            var marker_930970d7d353ed419ad39c4446b191f6 = L.marker(
+                [31.1048, 77.1734],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_2c57782a5116c6490921d3b1277073bd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bfbd26b6cb90427e2e1c62a9207666db = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e623aa7b4a3b3ed9dc8774826ad73810 = $(`<div id="html_e623aa7b4a3b3ed9dc8774826ad73810" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Himachal Pradesh</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 0<br>         <b>Eligible:</b> 17,300     </div>     </div>`)[0];
+                popup_bfbd26b6cb90427e2e1c62a9207666db.setContent(html_e623aa7b4a3b3ed9dc8774826ad73810);
+            
+        
+
+        marker_930970d7d353ed419ad39c4446b191f6.bindPopup(popup_bfbd26b6cb90427e2e1c62a9207666db)
+        ;
+
+        
+    
+    
+            marker_930970d7d353ed419ad39c4446b191f6.bindTooltip(
+                `<div>
+                     Himachal Pradesh: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_930970d7d353ed419ad39c4446b191f6.setIcon(icon_2c57782a5116c6490921d3b1277073bd);
+            
+    
+            var marker_3a8b1ee10ea34f6078bc22a1801ed3fa = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_c0373624b8398266dfddf4be8147604c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_dfc5bf024457243417a15dc0599844e9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_377be8edd1ddd7595eb6e799c65ecadd = $(`<div id="html_377be8edd1ddd7595eb6e799c65ecadd" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Jammu & Kashmir</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK</span><br>         <b>Compliance:</b> 73.5%<br>         <b>MBU Gap:</b> 68<br>         <b>Eligible:</b> 155     </div>     </div>`)[0];
+                popup_dfc5bf024457243417a15dc0599844e9.setContent(html_377be8edd1ddd7595eb6e799c65ecadd);
+            
+        
+
+        marker_3a8b1ee10ea34f6078bc22a1801ed3fa.bindPopup(popup_dfc5bf024457243417a15dc0599844e9)
+        ;
+
+        
+    
+    
+            marker_3a8b1ee10ea34f6078bc22a1801ed3fa.bindTooltip(
+                `<div>
+                     Jammu & Kashmir: 73.5%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3a8b1ee10ea34f6078bc22a1801ed3fa.setIcon(icon_c0373624b8398266dfddf4be8147604c);
+            
+    
+            var marker_0e8fc787e8fa4ad019ab527197c96da2 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_b6c6eccb503c3f11561962d8637da1bc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-triangle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_90d62e51f8f98875bcf0b47ec0637dbf = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_123c3a5e3366f5d43905fb56e86d630a = $(`<div id="html_123c3a5e3366f5d43905fb56e86d630a" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Jammu And Kashmir</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:red;">SERVICE DESERT</span><br>         <b>Compliance:</b> 0.0%<br>         <b>MBU Gap:</b> 913<br>         <b>Eligible:</b> 913     </div>     </div>`)[0];
+                popup_90d62e51f8f98875bcf0b47ec0637dbf.setContent(html_123c3a5e3366f5d43905fb56e86d630a);
+            
+        
+
+        marker_0e8fc787e8fa4ad019ab527197c96da2.bindPopup(popup_90d62e51f8f98875bcf0b47ec0637dbf)
+        ;
+
+        
+    
+    
+            marker_0e8fc787e8fa4ad019ab527197c96da2.bindTooltip(
+                `<div>
+                     Jammu And Kashmir: 0.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0e8fc787e8fa4ad019ab527197c96da2.setIcon(icon_b6c6eccb503c3f11561962d8637da1bc);
+            
+    
+            var marker_4cd08e283eca3413038e54e5e35a8735 = L.marker(
+                [33.7782, 76.5762],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_78b1110d150f25cd3ee34f175969285c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e761a1911a88e335ddfe29ca8e2ea77c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b72828a123a102fee1b8b6cd8505bcc2 = $(`<div id="html_b72828a123a102fee1b8b6cd8505bcc2" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Jammu and Kashmir</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 1<br>         <b>Eligible:</b> 47,493     </div>     </div>`)[0];
+                popup_e761a1911a88e335ddfe29ca8e2ea77c.setContent(html_b72828a123a102fee1b8b6cd8505bcc2);
+            
+        
+
+        marker_4cd08e283eca3413038e54e5e35a8735.bindPopup(popup_e761a1911a88e335ddfe29ca8e2ea77c)
+        ;
+
+        
+    
+    
+            marker_4cd08e283eca3413038e54e5e35a8735.bindTooltip(
+                `<div>
+                     Jammu and Kashmir: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4cd08e283eca3413038e54e5e35a8735.setIcon(icon_78b1110d150f25cd3ee34f175969285c);
+            
+    
+            var marker_5be4e6715d9b414a3a1ede8aab63c6cb = L.marker(
+                [23.6102, 85.2799],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_dd53816e3a19a3040e09cd6355af5626 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_29963e61c15594cdbb1da9067dd47f0c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8a62a3bae448d70cdc6a95ed57b2e4e0 = $(`<div id="html_8a62a3bae448d70cdc6a95ed57b2e4e0" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Jharkhand</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 1,395<br>         <b>Eligible:</b> 156,090     </div>     </div>`)[0];
+                popup_29963e61c15594cdbb1da9067dd47f0c.setContent(html_8a62a3bae448d70cdc6a95ed57b2e4e0);
+            
+        
+
+        marker_5be4e6715d9b414a3a1ede8aab63c6cb.bindPopup(popup_29963e61c15594cdbb1da9067dd47f0c)
+        ;
+
+        
+    
+    
+            marker_5be4e6715d9b414a3a1ede8aab63c6cb.bindTooltip(
+                `<div>
+                     Jharkhand: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5be4e6715d9b414a3a1ede8aab63c6cb.setIcon(icon_dd53816e3a19a3040e09cd6355af5626);
+            
+    
+            var marker_5306f585d27c2f0c9192b902ed6018d7 = L.marker(
+                [15.3173, 75.7139],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_da41a6a4e6b55d8ca2901f66d07dced8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cf08aca54e996befe929ac0243d1d6d6 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3dd91293c90ec2621dfeed2f5885821d = $(`<div id="html_3dd91293c90ec2621dfeed2f5885821d" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Karnataka</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 21,816<br>         <b>Eligible:</b> 213,125     </div>     </div>`)[0];
+                popup_cf08aca54e996befe929ac0243d1d6d6.setContent(html_3dd91293c90ec2621dfeed2f5885821d);
+            
+        
+
+        marker_5306f585d27c2f0c9192b902ed6018d7.bindPopup(popup_cf08aca54e996befe929ac0243d1d6d6)
+        ;
+
+        
+    
+    
+            marker_5306f585d27c2f0c9192b902ed6018d7.bindTooltip(
+                `<div>
+                     Karnataka: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5306f585d27c2f0c9192b902ed6018d7.setIcon(icon_da41a6a4e6b55d8ca2901f66d07dced8);
+            
+    
+            var marker_714da84c74945fd11ffea117d888e3a0 = L.marker(
+                [10.8505, 76.2711],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_06114b6942ee9ba1ef98184b582752f9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1059c83161b675a5a8e4ee794a85a843 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_68680d707be33c2e7768582a13e4597d = $(`<div id="html_68680d707be33c2e7768582a13e4597d" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Kerala</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 104<br>         <b>Eligible:</b> 72,327     </div>     </div>`)[0];
+                popup_1059c83161b675a5a8e4ee794a85a843.setContent(html_68680d707be33c2e7768582a13e4597d);
+            
+        
+
+        marker_714da84c74945fd11ffea117d888e3a0.bindPopup(popup_1059c83161b675a5a8e4ee794a85a843)
+        ;
+
+        
+    
+    
+            marker_714da84c74945fd11ffea117d888e3a0.bindTooltip(
+                `<div>
+                     Kerala: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_714da84c74945fd11ffea117d888e3a0.setIcon(icon_06114b6942ee9ba1ef98184b582752f9);
+            
+    
+            var marker_cc62cd466babf9586b330a1402a8b80c = L.marker(
+                [34.1526, 77.5771],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_26d8788d3ad86c6907ce9e8bc1f90f98 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1556f55bc77499ab52e98e4ec9db583f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8f4a46351f29f44c12a6814b25c53bee = $(`<div id="html_8f4a46351f29f44c12a6814b25c53bee" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Ladakh</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 0<br>         <b>Eligible:</b> 599     </div>     </div>`)[0];
+                popup_1556f55bc77499ab52e98e4ec9db583f.setContent(html_8f4a46351f29f44c12a6814b25c53bee);
+            
+        
+
+        marker_cc62cd466babf9586b330a1402a8b80c.bindPopup(popup_1556f55bc77499ab52e98e4ec9db583f)
+        ;
+
+        
+    
+    
+            marker_cc62cd466babf9586b330a1402a8b80c.bindTooltip(
+                `<div>
+                     Ladakh: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cc62cd466babf9586b330a1402a8b80c.setIcon(icon_26d8788d3ad86c6907ce9e8bc1f90f98);
+            
+    
+            var marker_de93e7d5caf3f518456b93b39c8c0fa0 = L.marker(
+                [10.5667, 72.6417],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_c49c14416a9ee2e1233fe222c45fbee3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a194f0f99f9b9e18a8d7a95f116a0df2 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8a252d738b66e38c0048a171dba9f31d = $(`<div id="html_8a252d738b66e38c0048a171dba9f31d" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Lakshadweep</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 0<br>         <b>Eligible:</b> 202     </div>     </div>`)[0];
+                popup_a194f0f99f9b9e18a8d7a95f116a0df2.setContent(html_8a252d738b66e38c0048a171dba9f31d);
+            
+        
+
+        marker_de93e7d5caf3f518456b93b39c8c0fa0.bindPopup(popup_a194f0f99f9b9e18a8d7a95f116a0df2)
+        ;
+
+        
+    
+    
+            marker_de93e7d5caf3f518456b93b39c8c0fa0.bindTooltip(
+                `<div>
+                     Lakshadweep: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_de93e7d5caf3f518456b93b39c8c0fa0.setIcon(icon_c49c14416a9ee2e1233fe222c45fbee3);
+            
+    
+            var marker_df8e19c17ecc407846bd5cc0530aafd0 = L.marker(
+                [22.9734, 78.6569],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_32d52855177fd4bf3c66ccea1447dd4a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_dc86e9c1e6e27d136fd5c2b55ef30507 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f235fa39dec5df7abe7751f6c4bf69e8 = $(`<div id="html_f235fa39dec5df7abe7751f6c4bf69e8" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Madhya Pradesh</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 3,473<br>         <b>Eligible:</b> 484,371     </div>     </div>`)[0];
+                popup_dc86e9c1e6e27d136fd5c2b55ef30507.setContent(html_f235fa39dec5df7abe7751f6c4bf69e8);
+            
+        
+
+        marker_df8e19c17ecc407846bd5cc0530aafd0.bindPopup(popup_dc86e9c1e6e27d136fd5c2b55ef30507)
+        ;
+
+        
+    
+    
+            marker_df8e19c17ecc407846bd5cc0530aafd0.bindTooltip(
+                `<div>
+                     Madhya Pradesh: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_df8e19c17ecc407846bd5cc0530aafd0.setIcon(icon_32d52855177fd4bf3c66ccea1447dd4a);
+            
+    
+            var marker_9400567fa45ae4d4689950e9bc8e400f = L.marker(
+                [19.7515, 75.7139],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_4f656f1cad86ea0cc2d9c18b6889e84a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e72ed9dc78a02f7535e5e63caedd00ec = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ceac99257ef821a750a67c76d6b211fb = $(`<div id="html_ceac99257ef821a750a67c76d6b211fb" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Maharashtra</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 573<br>         <b>Eligible:</b> 360,930     </div>     </div>`)[0];
+                popup_e72ed9dc78a02f7535e5e63caedd00ec.setContent(html_ceac99257ef821a750a67c76d6b211fb);
+            
+        
+
+        marker_9400567fa45ae4d4689950e9bc8e400f.bindPopup(popup_e72ed9dc78a02f7535e5e63caedd00ec)
+        ;
+
+        
+    
+    
+            marker_9400567fa45ae4d4689950e9bc8e400f.bindTooltip(
+                `<div>
+                     Maharashtra: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9400567fa45ae4d4689950e9bc8e400f.setIcon(icon_4f656f1cad86ea0cc2d9c18b6889e84a);
+            
+    
+            var marker_4ceb996b6271df60bf249cd4e0019763 = L.marker(
+                [24.6637, 93.9063],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_af25fa7f3c4773e2f66d00fabb715711 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f8e4013fb93fb37af0a7850c6f3a7155 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_fabf2cfa627ebf1ff456b665506dcc8f = $(`<div id="html_fabf2cfa627ebf1ff456b665506dcc8f" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Manipur</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 9<br>         <b>Eligible:</b> 13,193     </div>     </div>`)[0];
+                popup_f8e4013fb93fb37af0a7850c6f3a7155.setContent(html_fabf2cfa627ebf1ff456b665506dcc8f);
+            
+        
+
+        marker_4ceb996b6271df60bf249cd4e0019763.bindPopup(popup_f8e4013fb93fb37af0a7850c6f3a7155)
+        ;
+
+        
+    
+    
+            marker_4ceb996b6271df60bf249cd4e0019763.bindTooltip(
+                `<div>
+                     Manipur: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4ceb996b6271df60bf249cd4e0019763.setIcon(icon_af25fa7f3c4773e2f66d00fabb715711);
+            
+    
+            var marker_03d7d5decfad32f9e990eece040a588a = L.marker(
+                [25.467, 91.3662],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_2e8c24802deb8cb3da49c97df3d12bee = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-triangle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7f2096c45756741a62650b06ad7f8492 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1fc90451c13f43896a54c8d55a8aac1b = $(`<div id="html_1fc90451c13f43896a54c8d55a8aac1b" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Meghalaya</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:red;">SERVICE DESERT</span><br>         <b>Compliance:</b> 49.0%<br>         <b>MBU Gap:</b> 37,953<br>         <b>Eligible:</b> 74,484     </div>     </div>`)[0];
+                popup_7f2096c45756741a62650b06ad7f8492.setContent(html_1fc90451c13f43896a54c8d55a8aac1b);
+            
+        
+
+        marker_03d7d5decfad32f9e990eece040a588a.bindPopup(popup_7f2096c45756741a62650b06ad7f8492)
+        ;
+
+        
+    
+    
+            marker_03d7d5decfad32f9e990eece040a588a.bindTooltip(
+                `<div>
+                     Meghalaya: 49.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_03d7d5decfad32f9e990eece040a588a.setIcon(icon_2e8c24802deb8cb3da49c97df3d12bee);
+            
+    
+            var marker_296c9baf4c7896ab4a41d8e27397c4cf = L.marker(
+                [23.1645, 92.9376],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_c254450742d7f64b81037ca537440b7e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5bcb3dc1b6a3a38fd94d819e2990e765 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4d4c03f9533ed4f80e50ebee9973e688 = $(`<div id="html_4d4c03f9533ed4f80e50ebee9973e688" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Mizoram</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 6<br>         <b>Eligible:</b> 5,431     </div>     </div>`)[0];
+                popup_5bcb3dc1b6a3a38fd94d819e2990e765.setContent(html_4d4c03f9533ed4f80e50ebee9973e688);
+            
+        
+
+        marker_296c9baf4c7896ab4a41d8e27397c4cf.bindPopup(popup_5bcb3dc1b6a3a38fd94d819e2990e765)
+        ;
+
+        
+    
+    
+            marker_296c9baf4c7896ab4a41d8e27397c4cf.bindTooltip(
+                `<div>
+                     Mizoram: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_296c9baf4c7896ab4a41d8e27397c4cf.setIcon(icon_c254450742d7f64b81037ca537440b7e);
+            
+    
+            var marker_747611302b598c00f9b3eeb7786c3470 = L.marker(
+                [26.1584, 94.5624],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_53c635e38fc25ed0c7a5dd921d7b939c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9506fa4759252a7830f689ec8aeed37b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b955e72b9d13425b0622c4c537c36e19 = $(`<div id="html_b955e72b9d13425b0622c4c537c36e19" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Nagaland</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 447<br>         <b>Eligible:</b> 14,465     </div>     </div>`)[0];
+                popup_9506fa4759252a7830f689ec8aeed37b.setContent(html_b955e72b9d13425b0622c4c537c36e19);
+            
+        
+
+        marker_747611302b598c00f9b3eeb7786c3470.bindPopup(popup_9506fa4759252a7830f689ec8aeed37b)
+        ;
+
+        
+    
+    
+            marker_747611302b598c00f9b3eeb7786c3470.bindTooltip(
+                `<div>
+                     Nagaland: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_747611302b598c00f9b3eeb7786c3470.setIcon(icon_53c635e38fc25ed0c7a5dd921d7b939c);
+            
+    
+            var marker_eb1d79b43ca12e1057fb01fe0b9f16a2 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_193a68aa9321e9de2349d01ad3405616 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5496da128a575fa1a199684cbfed1ef7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2a0fe508e6757989474d47f6a561bb81 = $(`<div id="html_2a0fe508e6757989474d47f6a561bb81" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">ODISHA</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 0<br>         <b>Eligible:</b> 1     </div>     </div>`)[0];
+                popup_5496da128a575fa1a199684cbfed1ef7.setContent(html_2a0fe508e6757989474d47f6a561bb81);
+            
+        
+
+        marker_eb1d79b43ca12e1057fb01fe0b9f16a2.bindPopup(popup_5496da128a575fa1a199684cbfed1ef7)
+        ;
+
+        
+    
+    
+            marker_eb1d79b43ca12e1057fb01fe0b9f16a2.bindTooltip(
+                `<div>
+                     ODISHA: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_eb1d79b43ca12e1057fb01fe0b9f16a2.setIcon(icon_193a68aa9321e9de2349d01ad3405616);
+            
+    
+            var marker_aa1b80b0fa2977efeae211cda9225db9 = L.marker(
+                [20.9517, 85.0985],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_60df8eb915a9b85f6c00c774bd4d3b8b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_124414f0cfd7897734514540e04ac734 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f0f1e8c016a506058f6b90894ff76296 = $(`<div id="html_f0f1e8c016a506058f6b90894ff76296" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Odisha</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 433<br>         <b>Eligible:</b> 118,098     </div>     </div>`)[0];
+                popup_124414f0cfd7897734514540e04ac734.setContent(html_f0f1e8c016a506058f6b90894ff76296);
+            
+        
+
+        marker_aa1b80b0fa2977efeae211cda9225db9.bindPopup(popup_124414f0cfd7897734514540e04ac734)
+        ;
+
+        
+    
+    
+            marker_aa1b80b0fa2977efeae211cda9225db9.bindTooltip(
+                `<div>
+                     Odisha: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_aa1b80b0fa2977efeae211cda9225db9.setIcon(icon_60df8eb915a9b85f6c00c774bd4d3b8b);
+            
+    
+            var marker_8b52f8ce640db55a9f6c2a3d81fa0409 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_22a9c0258d2db7a5c8efe0aa9f9e61e5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_24275a8beb4aa77ab169fc7406d62cae = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_64caf606d543cc94c1e005cc5d80d435 = $(`<div id="html_64caf606d543cc94c1e005cc5d80d435" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Orissa</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 81<br>         <b>Eligible:</b> 4,149     </div>     </div>`)[0];
+                popup_24275a8beb4aa77ab169fc7406d62cae.setContent(html_64caf606d543cc94c1e005cc5d80d435);
+            
+        
+
+        marker_8b52f8ce640db55a9f6c2a3d81fa0409.bindPopup(popup_24275a8beb4aa77ab169fc7406d62cae)
+        ;
+
+        
+    
+    
+            marker_8b52f8ce640db55a9f6c2a3d81fa0409.bindTooltip(
+                `<div>
+                     Orissa: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8b52f8ce640db55a9f6c2a3d81fa0409.setIcon(icon_22a9c0258d2db7a5c8efe0aa9f9e61e5);
+            
+    
+            var marker_bd72736dfe5d15281bdf54624911912c = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_80ba4f1bdd042deed1c27298fa0bd95e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d21fe35f660d1288bd2e4a17e63c06e6 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c018d11014dfc4c6d2bb2a53c6dcde6a = $(`<div id="html_c018d11014dfc4c6d2bb2a53c6dcde6a" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Pondicherry</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 23<br>         <b>Eligible:</b> 1,272     </div>     </div>`)[0];
+                popup_d21fe35f660d1288bd2e4a17e63c06e6.setContent(html_c018d11014dfc4c6d2bb2a53c6dcde6a);
+            
+        
+
+        marker_bd72736dfe5d15281bdf54624911912c.bindPopup(popup_d21fe35f660d1288bd2e4a17e63c06e6)
+        ;
+
+        
+    
+    
+            marker_bd72736dfe5d15281bdf54624911912c.bindTooltip(
+                `<div>
+                     Pondicherry: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bd72736dfe5d15281bdf54624911912c.setIcon(icon_80ba4f1bdd042deed1c27298fa0bd95e);
+            
+    
+            var marker_4cfb334c63468bac4bceedde3f82ed63 = L.marker(
+                [11.9416, 79.8083],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_352e39477c6873b93aea8fe6a89461ca = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_67b51a5df8a46ed165d80b36f1310c84 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a6e1df7c77c96b9eff9301f5b4a87c8e = $(`<div id="html_a6e1df7c77c96b9eff9301f5b4a87c8e" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Puducherry</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 0<br>         <b>Eligible:</b> 1,701     </div>     </div>`)[0];
+                popup_67b51a5df8a46ed165d80b36f1310c84.setContent(html_a6e1df7c77c96b9eff9301f5b4a87c8e);
+            
+        
+
+        marker_4cfb334c63468bac4bceedde3f82ed63.bindPopup(popup_67b51a5df8a46ed165d80b36f1310c84)
+        ;
+
+        
+    
+    
+            marker_4cfb334c63468bac4bceedde3f82ed63.bindTooltip(
+                `<div>
+                     Puducherry: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4cfb334c63468bac4bceedde3f82ed63.setIcon(icon_352e39477c6873b93aea8fe6a89461ca);
+            
+    
+            var marker_507dbf10493048da5a44e6de14486905 = L.marker(
+                [31.1471, 75.3412],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_b0287601fd4b5f6b48aad8ac57a49a4d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a9452b67ed7bae86eac8fb5e7654af2b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9af7bca823cfcd87aa384e637717624d = $(`<div id="html_9af7bca823cfcd87aa384e637717624d" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Punjab</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 670<br>         <b>Eligible:</b> 73,574     </div>     </div>`)[0];
+                popup_a9452b67ed7bae86eac8fb5e7654af2b.setContent(html_9af7bca823cfcd87aa384e637717624d);
+            
+        
+
+        marker_507dbf10493048da5a44e6de14486905.bindPopup(popup_a9452b67ed7bae86eac8fb5e7654af2b)
+        ;
+
+        
+    
+    
+            marker_507dbf10493048da5a44e6de14486905.bindTooltip(
+                `<div>
+                     Punjab: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_507dbf10493048da5a44e6de14486905.setIcon(icon_b0287601fd4b5f6b48aad8ac57a49a4d);
+            
+    
+            var marker_374c09197d4060f5f05a6fbc63e9a556 = L.marker(
+                [27.0238, 74.2179],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_896a46237e6d6718992c66db8dad1d34 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ec50b136e2ac3d7c6882664332dff463 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7aabb2f6b3cb69a6d00793c02991d13e = $(`<div id="html_7aabb2f6b3cb69a6d00793c02991d13e" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Rajasthan</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 553<br>         <b>Eligible:</b> 342,903     </div>     </div>`)[0];
+                popup_ec50b136e2ac3d7c6882664332dff463.setContent(html_7aabb2f6b3cb69a6d00793c02991d13e);
+            
+        
+
+        marker_374c09197d4060f5f05a6fbc63e9a556.bindPopup(popup_ec50b136e2ac3d7c6882664332dff463)
+        ;
+
+        
+    
+    
+            marker_374c09197d4060f5f05a6fbc63e9a556.bindTooltip(
+                `<div>
+                     Rajasthan: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_374c09197d4060f5f05a6fbc63e9a556.setIcon(icon_896a46237e6d6718992c66db8dad1d34);
+            
+    
+            var marker_dfa2b1324290144f84a375d54392bcb9 = L.marker(
+                [27.533, 88.5122],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_0c21488971f6ad7de80c40dc8517a0e7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b7c986f4289fc10bdf0067197bb2eebf = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a347c00c2dbe89e82d72475d09d9b693 = $(`<div id="html_a347c00c2dbe89e82d72475d09d9b693" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Sikkim</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 12<br>         <b>Eligible:</b> 2,101     </div>     </div>`)[0];
+                popup_b7c986f4289fc10bdf0067197bb2eebf.setContent(html_a347c00c2dbe89e82d72475d09d9b693);
+            
+        
+
+        marker_dfa2b1324290144f84a375d54392bcb9.bindPopup(popup_b7c986f4289fc10bdf0067197bb2eebf)
+        ;
+
+        
+    
+    
+            marker_dfa2b1324290144f84a375d54392bcb9.bindTooltip(
+                `<div>
+                     Sikkim: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_dfa2b1324290144f84a375d54392bcb9.setIcon(icon_0c21488971f6ad7de80c40dc8517a0e7);
+            
+    
+            var marker_30ecdc0be83ab70ed2200e95d11bc684 = L.marker(
+                [11.1271, 78.6569],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_94d57a303ce1a0cb06df52ac6eeeb7f5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0450ecd68e8b877b3c089b65358b0d2f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_155f3ad91edcaa11272dfac20a027974 = $(`<div id="html_155f3ad91edcaa11272dfac20a027974" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Tamil Nadu</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 368<br>         <b>Eligible:</b> 219,540     </div>     </div>`)[0];
+                popup_0450ecd68e8b877b3c089b65358b0d2f.setContent(html_155f3ad91edcaa11272dfac20a027974);
+            
+        
+
+        marker_30ecdc0be83ab70ed2200e95d11bc684.bindPopup(popup_0450ecd68e8b877b3c089b65358b0d2f)
+        ;
+
+        
+    
+    
+            marker_30ecdc0be83ab70ed2200e95d11bc684.bindTooltip(
+                `<div>
+                     Tamil Nadu: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_30ecdc0be83ab70ed2200e95d11bc684.setIcon(icon_94d57a303ce1a0cb06df52ac6eeeb7f5);
+            
+    
+            var marker_44d9d13111b3f816a514f7644d50b3ee = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_2c38cf2f0ac5cce6f14f3e0ca90f74df = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-triangle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_41b978e3e3922624f3f780b687d15695 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_966ff358c9b909e1174e413575f756fa = $(`<div id="html_966ff358c9b909e1174e413575f756fa" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Tamilnadu</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:red;">SERVICE DESERT</span><br>         <b>Compliance:</b> 0.0%<br>         <b>MBU Gap:</b> 0<br>         <b>Eligible:</b> 0     </div>     </div>`)[0];
+                popup_41b978e3e3922624f3f780b687d15695.setContent(html_966ff358c9b909e1174e413575f756fa);
+            
+        
+
+        marker_44d9d13111b3f816a514f7644d50b3ee.bindPopup(popup_41b978e3e3922624f3f780b687d15695)
+        ;
+
+        
+    
+    
+            marker_44d9d13111b3f816a514f7644d50b3ee.bindTooltip(
+                `<div>
+                     Tamilnadu: 0.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_44d9d13111b3f816a514f7644d50b3ee.setIcon(icon_2c38cf2f0ac5cce6f14f3e0ca90f74df);
+            
+    
+            var marker_9a34a7b0d31d37bd5f9a1812a984c009 = L.marker(
+                [18.1124, 79.0193],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_6d4977e1e5f964a0ec41bfd5dff8c5c3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_71abbc7a48336482d1b4b28ec007288c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_354fd414919938ba5630eff69fe2e4df = $(`<div id="html_354fd414919938ba5630eff69fe2e4df" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Telangana</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 951<br>         <b>Eligible:</b> 130,423     </div>     </div>`)[0];
+                popup_71abbc7a48336482d1b4b28ec007288c.setContent(html_354fd414919938ba5630eff69fe2e4df);
+            
+        
+
+        marker_9a34a7b0d31d37bd5f9a1812a984c009.bindPopup(popup_71abbc7a48336482d1b4b28ec007288c)
+        ;
+
+        
+    
+    
+            marker_9a34a7b0d31d37bd5f9a1812a984c009.bindTooltip(
+                `<div>
+                     Telangana: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9a34a7b0d31d37bd5f9a1812a984c009.setIcon(icon_6d4977e1e5f964a0ec41bfd5dff8c5c3);
+            
+    
+            var marker_ef86cceceea9f59366016dcb802f9a3d = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_befad3ae6d173b6578ed87035452d883 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-triangle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_132e97c2013fb0fb8e93e3eff78337c1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_fc374e485d8ea0831a82cb10de06fd85 = $(`<div id="html_fc374e485d8ea0831a82cb10de06fd85" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">The Dadra And Nagar Haveli And Daman And Diu</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:red;">SERVICE DESERT</span><br>         <b>Compliance:</b> 0.0%<br>         <b>MBU Gap:</b> 689<br>         <b>Eligible:</b> 689     </div>     </div>`)[0];
+                popup_132e97c2013fb0fb8e93e3eff78337c1.setContent(html_fc374e485d8ea0831a82cb10de06fd85);
+            
+        
+
+        marker_ef86cceceea9f59366016dcb802f9a3d.bindPopup(popup_132e97c2013fb0fb8e93e3eff78337c1)
+        ;
+
+        
+    
+    
+            marker_ef86cceceea9f59366016dcb802f9a3d.bindTooltip(
+                `<div>
+                     The Dadra And Nagar Haveli And Daman And Diu: 0.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ef86cceceea9f59366016dcb802f9a3d.setIcon(icon_befad3ae6d173b6578ed87035452d883);
+            
+    
+            var marker_de969f01d357dcfb21ad146b3bcca661 = L.marker(
+                [23.9408, 91.9882],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_17c763c216b06dc33d31fce6fe88cef4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1c105b5ffcadacf7c0918065b51fac00 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1cda936de69ab14d8903be96fb4d986a = $(`<div id="html_1cda936de69ab14d8903be96fb4d986a" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Tripura</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 0<br>         <b>Eligible:</b> 11,030     </div>     </div>`)[0];
+                popup_1c105b5ffcadacf7c0918065b51fac00.setContent(html_1cda936de69ab14d8903be96fb4d986a);
+            
+        
+
+        marker_de969f01d357dcfb21ad146b3bcca661.bindPopup(popup_1c105b5ffcadacf7c0918065b51fac00)
+        ;
+
+        
+    
+    
+            marker_de969f01d357dcfb21ad146b3bcca661.bindTooltip(
+                `<div>
+                     Tripura: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_de969f01d357dcfb21ad146b3bcca661.setIcon(icon_17c763c216b06dc33d31fce6fe88cef4);
+            
+    
+            var marker_2b82943a6eef669a3d29104fc4d886b1 = L.marker(
+                [26.8467, 80.9462],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_e83ebb8e918f8304213abfabb03f8059 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_03134b357f864f2b77052d924e67fa81 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d07990c1c331d4b7657199c099059558 = $(`<div id="html_d07990c1c331d4b7657199c099059558" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Uttar Pradesh</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 9,949<br>         <b>Eligible:</b> 1,000,727     </div>     </div>`)[0];
+                popup_03134b357f864f2b77052d924e67fa81.setContent(html_d07990c1c331d4b7657199c099059558);
+            
+        
+
+        marker_2b82943a6eef669a3d29104fc4d886b1.bindPopup(popup_03134b357f864f2b77052d924e67fa81)
+        ;
+
+        
+    
+    
+            marker_2b82943a6eef669a3d29104fc4d886b1.bindTooltip(
+                `<div>
+                     Uttar Pradesh: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2b82943a6eef669a3d29104fc4d886b1.setIcon(icon_e83ebb8e918f8304213abfabb03f8059);
+            
+    
+            var marker_3960ba1022b6650ebd6ba0194c5f21e1 = L.marker(
+                [30.0668, 79.0193],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_8d1c860bd2d5d58a2e321ee25b80e61b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d4ce2ea35363312ae0a8c4ea6d2c0fe8 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9041ecc05105e3f0ef782ef7e6ee4dea = $(`<div id="html_9041ecc05105e3f0ef782ef7e6ee4dea" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Uttarakhand</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 26<br>         <b>Eligible:</b> 37,359     </div>     </div>`)[0];
+                popup_d4ce2ea35363312ae0a8c4ea6d2c0fe8.setContent(html_9041ecc05105e3f0ef782ef7e6ee4dea);
+            
+        
+
+        marker_3960ba1022b6650ebd6ba0194c5f21e1.bindPopup(popup_d4ce2ea35363312ae0a8c4ea6d2c0fe8)
+        ;
+
+        
+    
+    
+            marker_3960ba1022b6650ebd6ba0194c5f21e1.bindTooltip(
+                `<div>
+                     Uttarakhand: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3960ba1022b6650ebd6ba0194c5f21e1.setIcon(icon_8d1c860bd2d5d58a2e321ee25b80e61b);
+            
+    
+            var marker_018ae2f0cb04def13bc21b20c5f3f1a7 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_66bd98c7cc8c17d9603fe52ba5db3546 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-triangle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a61c0078ef4fecbf97d92b346fe8f25c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_572013a3d8b2d0139968316a8a1fe23a = $(`<div id="html_572013a3d8b2d0139968316a8a1fe23a" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Uttaranchal</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:red;">SERVICE DESERT</span><br>         <b>Compliance:</b> 0.0%<br>         <b>MBU Gap:</b> 0<br>         <b>Eligible:</b> 0     </div>     </div>`)[0];
+                popup_a61c0078ef4fecbf97d92b346fe8f25c.setContent(html_572013a3d8b2d0139968316a8a1fe23a);
+            
+        
+
+        marker_018ae2f0cb04def13bc21b20c5f3f1a7.bindPopup(popup_a61c0078ef4fecbf97d92b346fe8f25c)
+        ;
+
+        
+    
+    
+            marker_018ae2f0cb04def13bc21b20c5f3f1a7.bindTooltip(
+                `<div>
+                     Uttaranchal: 0.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_018ae2f0cb04def13bc21b20c5f3f1a7.setIcon(icon_66bd98c7cc8c17d9603fe52ba5db3546);
+            
+    
+            var marker_768f88d0f849784053b511cd2909676a = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_9e221c910e0f123d36c3817728bbd02b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e830f3e91cfc5382c1bf0a8d88bec049 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9b5a6e387513ba6c3ca6502d1bb86e63 = $(`<div id="html_9b5a6e387513ba6c3ca6502d1bb86e63" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">WEST BENGAL</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 3<br>         <b>Eligible:</b> 4     </div>     </div>`)[0];
+                popup_e830f3e91cfc5382c1bf0a8d88bec049.setContent(html_9b5a6e387513ba6c3ca6502d1bb86e63);
+            
+        
+
+        marker_768f88d0f849784053b511cd2909676a.bindPopup(popup_e830f3e91cfc5382c1bf0a8d88bec049)
+        ;
+
+        
+    
+    
+            marker_768f88d0f849784053b511cd2909676a.bindTooltip(
+                `<div>
+                     WEST BENGAL: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_768f88d0f849784053b511cd2909676a.setIcon(icon_9e221c910e0f123d36c3817728bbd02b);
+            
+    
+            var marker_7268a74644d28a747c0287fb1fb6dda8 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_03dc666b7683efdeeee1fe960bedd5e2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_dbc8f2b535e76cab2ef27483b3bc351f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9b538c6e738bcb1f41d5017a21d82863 = $(`<div id="html_9b538c6e738bcb1f41d5017a21d82863" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">WESTBENGAL</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 0<br>         <b>Eligible:</b> 1     </div>     </div>`)[0];
+                popup_dbc8f2b535e76cab2ef27483b3bc351f.setContent(html_9b538c6e738bcb1f41d5017a21d82863);
+            
+        
+
+        marker_7268a74644d28a747c0287fb1fb6dda8.bindPopup(popup_dbc8f2b535e76cab2ef27483b3bc351f)
+        ;
+
+        
+    
+    
+            marker_7268a74644d28a747c0287fb1fb6dda8.bindTooltip(
+                `<div>
+                     WESTBENGAL: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7268a74644d28a747c0287fb1fb6dda8.setIcon(icon_03dc666b7683efdeeee1fe960bedd5e2);
+            
+    
+            var marker_19509f2528e4b801c64e447f9e575579 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_dcab701e3dbd91f9bdeeb54f5b1bfd67 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-triangle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5764ab5c3eef70d25ec4d9d3b3aa0bdc = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0676d81bdc149dc05c20be3d91d5c033 = $(`<div id="html_0676d81bdc149dc05c20be3d91d5c033" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">West  Bengal</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:red;">SERVICE DESERT</span><br>         <b>Compliance:</b> 40.0%<br>         <b>MBU Gap:</b> 9<br>         <b>Eligible:</b> 15     </div>     </div>`)[0];
+                popup_5764ab5c3eef70d25ec4d9d3b3aa0bdc.setContent(html_0676d81bdc149dc05c20be3d91d5c033);
+            
+        
+
+        marker_19509f2528e4b801c64e447f9e575579.bindPopup(popup_5764ab5c3eef70d25ec4d9d3b3aa0bdc)
+        ;
+
+        
+    
+    
+            marker_19509f2528e4b801c64e447f9e575579.bindTooltip(
+                `<div>
+                     West  Bengal: 40.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_19509f2528e4b801c64e447f9e575579.setIcon(icon_dcab701e3dbd91f9bdeeb54f5b1bfd67);
+            
+    
+            var marker_c3d24bdd7320d4532ad492bce93a4cea = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_190b49e47a9518a0336aa94008d22c32 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e9dd8c0ab7553f825c67e27634283b98 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_92beea4ebb0450699b3aecb6dcf52f0b = $(`<div id="html_92beea4ebb0450699b3aecb6dcf52f0b" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">West Bangal</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 0<br>         <b>Eligible:</b> 10     </div>     </div>`)[0];
+                popup_e9dd8c0ab7553f825c67e27634283b98.setContent(html_92beea4ebb0450699b3aecb6dcf52f0b);
+            
+        
+
+        marker_c3d24bdd7320d4532ad492bce93a4cea.bindPopup(popup_e9dd8c0ab7553f825c67e27634283b98)
+        ;
+
+        
+    
+    
+            marker_c3d24bdd7320d4532ad492bce93a4cea.bindTooltip(
+                `<div>
+                     West Bangal: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c3d24bdd7320d4532ad492bce93a4cea.setIcon(icon_190b49e47a9518a0336aa94008d22c32);
+            
+    
+            var marker_b7c82f24d42a5b09b794fb0a6f6eff1e = L.marker(
+                [22.9868, 87.855],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_a040c140c261d5aa3d82c6e05e00ac6c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d4776be05b4180cc5f4893b0a0805bb2 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_78ffdd6125d7ddee074e11da66dec4ee = $(`<div id="html_78ffdd6125d7ddee074e11da66dec4ee" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">West Bengal</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 24,321<br>         <b>Eligible:</b> 366,787     </div>     </div>`)[0];
+                popup_d4776be05b4180cc5f4893b0a0805bb2.setContent(html_78ffdd6125d7ddee074e11da66dec4ee);
+            
+        
+
+        marker_b7c82f24d42a5b09b794fb0a6f6eff1e.bindPopup(popup_d4776be05b4180cc5f4893b0a0805bb2)
+        ;
+
+        
+    
+    
+            marker_b7c82f24d42a5b09b794fb0a6f6eff1e.bindTooltip(
+                `<div>
+                     West Bengal: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b7c82f24d42a5b09b794fb0a6f6eff1e.setIcon(icon_a040c140c261d5aa3d82c6e05e00ac6c);
+            
+    
+            var marker_dabd87ce0271df8d214aab0767e4d189 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_9b0b9e3fa0029bdf472860d5bfc65d2c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "warning",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c39e0fc73f20859e5eceae38011ce2bd = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a90d5159b1d5d92e2823c0d56e85733e = $(`<div id="html_a90d5159b1d5d92e2823c0d56e85733e" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">West bengal</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:orange;">AT RISK</span><br>         <b>Compliance:</b> 71.4%<br>         <b>MBU Gap:</b> 2<br>         <b>Eligible:</b> 7     </div>     </div>`)[0];
+                popup_c39e0fc73f20859e5eceae38011ce2bd.setContent(html_a90d5159b1d5d92e2823c0d56e85733e);
+            
+        
+
+        marker_dabd87ce0271df8d214aab0767e4d189.bindPopup(popup_c39e0fc73f20859e5eceae38011ce2bd)
+        ;
+
+        
+    
+    
+            marker_dabd87ce0271df8d214aab0767e4d189.bindTooltip(
+                `<div>
+                     West bengal: 71.4%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_dabd87ce0271df8d214aab0767e4d189.setIcon(icon_9b0b9e3fa0029bdf472860d5bfc65d2c);
+            
+    
+            var marker_1701d1b709da70d990ee52b6efcee160 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_c9bad10a720cb47cffe00d577bae1fae = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-triangle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_27f22e20d5c4b885d1d716967be06196 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_15a4d5d70d361b72c0ee41f35933d73e = $(`<div id="html_15a4d5d70d361b72c0ee41f35933d73e" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">Westbengal</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:red;">SERVICE DESERT</span><br>         <b>Compliance:</b> 33.3%<br>         <b>MBU Gap:</b> 4<br>         <b>Eligible:</b> 6     </div>     </div>`)[0];
+                popup_27f22e20d5c4b885d1d716967be06196.setContent(html_15a4d5d70d361b72c0ee41f35933d73e);
+            
+        
+
+        marker_1701d1b709da70d990ee52b6efcee160.bindPopup(popup_27f22e20d5c4b885d1d716967be06196)
+        ;
+
+        
+    
+    
+            marker_1701d1b709da70d990ee52b6efcee160.bindTooltip(
+                `<div>
+                     Westbengal: 33.3%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1701d1b709da70d990ee52b6efcee160.setIcon(icon_c9bad10a720cb47cffe00d577bae1fae);
+            
+    
+            var marker_a67e839ae54ce4c426db2b5374409bfa = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_bfdcb12ab926d79f8c564bf088ffd970 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7ba5473f192d6ea8b0ded108f8f554da = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_59476a56f6500055d349d310bdc68d0a = $(`<div id="html_59476a56f6500055d349d310bdc68d0a" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">andhra pradesh</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:green;">COMPLIANT</span><br>         <b>Compliance:</b> 100.0%<br>         <b>MBU Gap:</b> 0<br>         <b>Eligible:</b> 5     </div>     </div>`)[0];
+                popup_7ba5473f192d6ea8b0ded108f8f554da.setContent(html_59476a56f6500055d349d310bdc68d0a);
+            
+        
+
+        marker_a67e839ae54ce4c426db2b5374409bfa.bindPopup(popup_7ba5473f192d6ea8b0ded108f8f554da)
+        ;
+
+        
+    
+    
+            marker_a67e839ae54ce4c426db2b5374409bfa.bindTooltip(
+                `<div>
+                     andhra pradesh: 100.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a67e839ae54ce4c426db2b5374409bfa.setIcon(icon_bfdcb12ab926d79f8c564bf088ffd970);
+            
+    
+            var marker_95dff38736d19de3456c67da00d10b58 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_dd1604df649386353f36f006bed50520 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-triangle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c0157c4694b7613047424d3f2109b43b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7ac8086e510b338b77c6295a9ed72885 = $(`<div id="html_7ac8086e510b338b77c6295a9ed72885" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">odisha</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:red;">SERVICE DESERT</span><br>         <b>Compliance:</b> 0.0%<br>         <b>MBU Gap:</b> 0<br>         <b>Eligible:</b> 0     </div>     </div>`)[0];
+                popup_c0157c4694b7613047424d3f2109b43b.setContent(html_7ac8086e510b338b77c6295a9ed72885);
+            
+        
+
+        marker_95dff38736d19de3456c67da00d10b58.bindPopup(popup_c0157c4694b7613047424d3f2109b43b)
+        ;
+
+        
+    
+    
+            marker_95dff38736d19de3456c67da00d10b58.bindTooltip(
+                `<div>
+                     odisha: 0.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_95dff38736d19de3456c67da00d10b58.setIcon(icon_dd1604df649386353f36f006bed50520);
+            
+    
+            var marker_192b6675f9301cd9184cd1c53d08f721 = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_7555b53dee0f475de28dfabb910943b1);
+        
+    
+            var icon_a2306d6a3f06479dcfe25be8083b8a81 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-triangle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0196de48e67e62ad441ee72d58b9f246 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7caf2fbcb10152340c43bf436d7c4ef5 = $(`<div id="html_7caf2fbcb10152340c43bf436d7c4ef5" style="width: 100.0%; height: 100.0%;">     <div style="width:200px;">         <h4 style="margin-bottom:5px;">west Bengal</h4>         <hr style="margin:5px 0;">         <b>Status:</b> <span style="color:red;">SERVICE DESERT</span><br>         <b>Compliance:</b> 0.0%<br>         <b>MBU Gap:</b> 0<br>         <b>Eligible:</b> 0     </div>     </div>`)[0];
+                popup_0196de48e67e62ad441ee72d58b9f246.setContent(html_7caf2fbcb10152340c43bf436d7c4ef5);
+            
+        
+
+        marker_192b6675f9301cd9184cd1c53d08f721.bindPopup(popup_0196de48e67e62ad441ee72d58b9f246)
+        ;
+
+        
+    
+    
+            marker_192b6675f9301cd9184cd1c53d08f721.bindTooltip(
+                `<div>
+                     west Bengal: 0.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_192b6675f9301cd9184cd1c53d08f721.setIcon(icon_a2306d6a3f06479dcfe25be8083b8a81);
+            
+</script>
+</html>
