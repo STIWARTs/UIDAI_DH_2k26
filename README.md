@@ -313,17 +313,18 @@ Red (Service Desert)  ██████                                    147 
 
 ## 📈 Visualizations
 
-Our analysis generates **7 interactive visualizations** for the hackathon submission:
+Our analysis generates **8 interactive visualizations** for the hackathon submission:
 
 | # | Chart | Purpose |
 |:-:|:------|:--------|
 | 1 | **Problem Districts by State** | Identify states with most Service Desert + Moderate Risk districts |
 | 2 | **MBU Gap Treemap** | Visualize children at risk by state (size = gap, color = severity) |
 | 3 | **MBU Gap by State** | Children at risk of losing benefits per state |
-| 4 | **Service Desert Scatter Plot** | K-Means clustering with district-level risk categories |
-| 5 | **Daily Update Trend** | Time series with 7-day moving average |
-| 6 | **Forecast Chart** | Prophet-based 6-month prediction for school admission season |
-| 7 | **Financial Impact Bar** | Scholarships & DBT benefits at risk (Rs. Crore) |
+| 4 | **Optimal Cluster Selection** | Elbow Method + Silhouette Score for K-Means tuning |
+| 5 | **Service Desert Scatter Plot** | K-Means clustering with district-level risk categories |
+| 6 | **Daily Update Trend** | Time series with 7-day moving average |
+| 7 | **Forecast Chart** | Prophet-based 6-month prediction for school admission season |
+| 8 | **Financial Impact Bar** | Scholarships & DBT benefits at risk (Rs. Crore) |
 
 ### Chart Gallery
 
@@ -336,17 +337,20 @@ Our analysis generates **7 interactive visualizations** for the hackathon submis
 #### 3. MBU Gap by State (Children at Risk)
 ![MBU Gap by State](analysis_outputs/chart3_mbu_gap_by_state.png)
 
-#### 4. Service Desert Identification (K-Means Clustering)
-![Service Desert Scatter](analysis_outputs/chart4_service_desert_scatter.png)
+#### 4. Optimal Cluster Selection (Elbow + Silhouette)
+![Elbow Silhouette](analysis_outputs/chart4_elbow_silhouette.png)
 
-#### 5. Daily Biometric Update Trends
-![Daily Trends](analysis_outputs/chart5_daily_trends.png)
+#### 5. Service Desert Identification (K-Means Clustering)
+![Service Desert Scatter](analysis_outputs/chart5_service_desert_scatter.png)
 
-#### 6. MBU Forecast: Predicting the Update Crunch
-![Forecast](analysis_outputs/chart6_forecast.png)
+#### 6. Daily Biometric Update Trends
+![Daily Trends](analysis_outputs/chart6_daily_trends.png)
 
-#### 7. Financial Impact of MBU Non-Compliance
-![Financial Impact](analysis_outputs/chart7_financial_impact.png)
+#### 7. MBU Forecast: Predicting the Update Crunch
+![Forecast](analysis_outputs/chart7_forecast.png)
+
+#### 8. Financial Impact of MBU Non-Compliance
+![Financial Impact](analysis_outputs/chart8_financial_impact.png)
 
 > 📁 All visualizations are also available as interactive HTML files in `analysis_outputs/`
 
