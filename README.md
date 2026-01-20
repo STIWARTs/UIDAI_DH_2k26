@@ -208,6 +208,23 @@ $$\text{Anomaly if } \mathcal{L}_{reconstruction} > \mu + 2\sigma$$
 - **Output:** Feature importance showing why a district is classified as Service Desert
 - **Use Case:** Provide transparent, auditable explanations for policy decisions
 
+### 📊 Deep Learning Visualizations
+
+#### Model Benchmarking: LSTM vs Baselines
+![Model Benchmarking](analysis_outputs/dl_chart1_model_benchmarking.png)
+
+> **Key Result:** LSTM reduces RMSE by **1.7%** vs Linear Regression and **17%** vs Moving Average
+
+#### LSTM Training Progress
+![LSTM Training Loss](analysis_outputs/dl_chart2_training_loss.png)
+
+> Training converges smoothly over 100 epochs with learning rate scheduling
+
+#### LSTM 6-Month Forecast
+![LSTM Forecast](analysis_outputs/dl_chart3_lstm_forecast.png)
+
+> LSTM predicts MBU demand surge during school admission season (June-July 2026)
+
 ### 🗺️ Module 4: Interactive Geospatial Map
 
 **Folium** generates an interactive HTML map of India with:
