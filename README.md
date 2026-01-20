@@ -499,7 +499,7 @@ uidai_datasets/
 </tr>
 <tr>
 <td align="center" width="16%">
-<img src="https://shap.readthedocs.io/en/latest/_static/shap_logo.png" width="48" height="48" alt="SHAP" />
+<img src="https://miro.medium.com/v2/resize:fit:602/1*d3R7xA7KH9mi-nrmp0t2UA.png" width="48" height="48" alt="SHAP" />
 <br><strong>SHAP</strong>
 <br><sub>Explainable AI</sub>
 </td>
@@ -514,11 +514,12 @@ uidai_datasets/
 <br><sub>Time Series</sub>
 </td>
 <td align="center" width="16%">
-<img src="https://kaleido-io.github.io/kaleido/img/kaleido-logo.svg" width="48" height="48" alt="Kaleido" />
+<img src="https://avatars.githubusercontent.com/u/5997976?s=200&v=4" width="48" height="48" alt="Kaleido" />
 <br><strong>Kaleido</strong>
 <br><sub>Chart Export</sub>
 </td>
 <td colspan="2" align="center" width="32%">
+<img src="https://jupyter.org/assets/logos/rectanglelogo-greytext-orangebody-greymoons.svg" width="48" height="48" alt="Jupyter Notebook" />
 <br><strong>Jupyter Notebook</strong>
 <br><sub>Interactive Development</sub>
 </td>
