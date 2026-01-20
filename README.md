@@ -1,3 +1,6 @@
+
+<img width="1282" height="239" alt="UIDAI_Challenge" src="https://github.com/user-attachments/assets/33370c28-05f2-4f75-a0e5-a4a28fefd29d" />
+
 <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/Aadhaar_Logo.svg/1200px-Aadhaar_Logo.svg.png" alt="UIDAI Logo" width="120"/>
 </p>
