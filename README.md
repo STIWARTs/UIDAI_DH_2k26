@@ -313,18 +313,42 @@ Red (Service Desert)  ██████                                    147 
 
 ## 📈 Visualizations
 
-Our analysis generates **6 interactive visualizations** for the hackathon submission:
+Our analysis generates **7 interactive visualizations** for the hackathon submission:
 
 | # | Chart | Purpose |
 |:-:|:------|:--------|
-| 1 | **State-wise Compliance Bar Chart** | Compare MBU compliance across all states with threshold markers |
-| 2 | **MBU Gap Treemap** | Visualize children at risk by state (size = gap, color = compliance) |
-| 3 | **Service Desert Scatter Plot** | Cluster visualization with district-level details |
-| 4 | **Daily Update Trend** | Time series with 7-day moving average |
-| 5 | **Forecast Chart** | 6-month prediction with confidence intervals |
-| 6 | **Financial Impact Bar** | Scholarships & DBT benefits at risk |
+| 1 | **Problem Districts by State** | Identify states with most Service Desert + Moderate Risk districts |
+| 2 | **MBU Gap Treemap** | Visualize children at risk by state (size = gap, color = severity) |
+| 3 | **MBU Gap by State** | Children at risk of losing benefits per state |
+| 4 | **Service Desert Scatter Plot** | K-Means clustering with district-level risk categories |
+| 5 | **Daily Update Trend** | Time series with 7-day moving average |
+| 6 | **Forecast Chart** | Prophet-based 6-month prediction for school admission season |
+| 7 | **Financial Impact Bar** | Scholarships & DBT benefits at risk (Rs. Crore) |
 
-> All visualizations are interactive (Plotly) and exportable as HTML/PDF
+### Chart Gallery
+
+#### 1. Problem Districts by State
+![Problem Districts](analysis_outputs/chart1_problem_districts.png)
+
+#### 2. MBU Gap Treemap
+![MBU Gap Treemap](analysis_outputs/chart2_gap_treemap.png)
+
+#### 3. MBU Gap by State (Children at Risk)
+![MBU Gap by State](analysis_outputs/chart3_mbu_gap_by_state.png)
+
+#### 4. Service Desert Identification (K-Means Clustering)
+![Service Desert Scatter](analysis_outputs/chart4_service_desert_scatter.png)
+
+#### 5. Daily Biometric Update Trends
+![Daily Trends](analysis_outputs/chart5_daily_trends.png)
+
+#### 6. MBU Forecast: Predicting the Update Crunch
+![Forecast](analysis_outputs/chart6_forecast.png)
+
+#### 7. Financial Impact of MBU Non-Compliance
+![Financial Impact](analysis_outputs/chart7_financial_impact.png)
+
+> 📁 All visualizations are also available as interactive HTML files in `analysis_outputs/`
 
 ---
 
