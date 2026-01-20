@@ -46,7 +46,7 @@
 - [Key Features](#-key-features)
 - [Deep Learning Edition](#-deep-learning-edition-new)
 - [Architecture](#-architecture)
-- [📊 Methodology Flow Diagram](Methodology.md)
+- [Methodology Flow Diagram](Methodology.md)
 - [Key Findings](#-key-findings)
 - [Visualizations](#-visualizations)
 - [Installation](#-installation)
