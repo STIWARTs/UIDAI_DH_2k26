@@ -247,31 +247,42 @@ Our analysis generates **6 interactive visualizations** for the hackathon submis
 
 - Python 3.10 or higher
 - pip package manager
+- Git
 
-### Setup
+### Quick Setup
 
 ```bash
-# Clone the repository
+# 1. Clone the repository
 git clone https://github.com/STIWARTs/UIDAI_DH_2k26.git
 cd UIDAI_DH_2k26
 
-# Create virtual environment
+# 2. Create virtual environment
 python -m venv .venv
 
-# Activate virtual environment
-# Windows
-.venv\Scripts\activate
+# 3. Activate virtual environment
+# Windows (PowerShell)
+.venv\Scripts\Activate.ps1
+# Windows (CMD)
+.venv\Scripts\activate.bat
 # Linux/Mac
 source .venv/bin/activate
 
-# Install dependencies
-pip install pandas numpy plotly scikit-learn scipy jupyter
+# 4. Install all dependencies
+pip install -r requirements.txt
 ```
 
-### Optional: Install Prophet for Advanced Forecasting
-```bash
-pip install prophet
-```
+### What's Included in requirements.txt
+
+| Category | Packages |
+|:---------|:---------|
+| **Core Data Science** | numpy, pandas, scipy |
+| **Machine Learning** | scikit-learn, shap |
+| **Deep Learning** | torch (PyTorch) |
+| **Time Series** | prophet |
+| **Visualization** | matplotlib, plotly, folium, kaleido |
+| **Jupyter** | ipykernel, ipython, jupyter_client |
+
+> ⚡ **Note:** The full installation may take 5-10 minutes due to PyTorch and Prophet dependencies.
 
 ---
 
