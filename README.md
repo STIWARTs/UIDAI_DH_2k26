@@ -216,7 +216,7 @@ $$\text{Anomaly if } \mathcal{L}_{reconstruction} > \mu + 2\sigma$$
 > **Key Result:** LSTM reduces RMSE by **1.7%** vs Linear Regression and **17%** vs Moving Average
 
 #### LSTM Training Progress
-![LSTM Training Loss](analysis_outputs/dl_chart2_trainiW@ng_loss.png)
+![LSTM Training Loss](analysis_outputs/dl_chart2_training_loss.png)
 
 > Training converges smoothly over 100 epochs with learning rate scheduling
 
