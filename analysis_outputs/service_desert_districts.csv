@@ -1,0 +1,9 @@
+state,district,mbu_eligible,bio_age_5_17,mbu_gap,mbu_compliance_ratio,cluster,cluster_name
+Bihar,Pashchim Champaran,15797.0,40.0,15757.0,0.253212635310502,3,Service Desert
+Bihar,Purbi Champaran,14071.0,0.0,14071.0,0.0,3,Service Desert
+Gujarat,Banas Kantha,12716.0,59.0,12657.0,0.46398238439760936,3,Service Desert
+Gujarat,Dohad,12333.0,2168.0,10165.0,17.578853482526554,3,Service Desert
+Karnataka,Bengaluru Urban,19278.0,0.0,19278.0,0.0,3,Service Desert
+Meghalaya,East Khasi Hills,18864.0,8982.0,9882.0,47.61450381679389,3,Service Desert
+Meghalaya,West Khasi Hills,10588.0,3326.0,7262.0,31.41292028711749,3,Service Desert
+West Bengal,Dinajpur Uttar,11337.0,0.0,11337.0,0.0,3,Service Desert
