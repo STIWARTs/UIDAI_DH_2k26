@@ -40,7 +40,7 @@
 - [Problem Statement](#-problem-statement)
 - [Our Solution](#-our-solution)
 - [Key Features](#-key-features)
-- [🚀 Deep Learning Edition (NEW!)](#-deep-learning-edition-new)
+- [Deep Learning Edition (NEW!)](#-deep-learning-edition-new)
 - [Architecture](#-architecture)
 - [Key Findings](#-key-findings)
 - [Visualizations](#-visualizations)
@@ -353,6 +353,16 @@ Our analysis generates **8 interactive visualizations** for the hackathon submis
 ![Financial Impact](analysis_outputs/chart8_financial_impact.png)
 
 > 📁 All visualizations are also available as interactive HTML files in `analysis_outputs/`
+
+### 🗺️ Interactive Service Desert Map
+
+> **🔗 [Click here to view the Interactive India Map](https://stiwarts.github.io/UIDAI_DH_2k26/)**
+
+Explore the **Folium-powered geospatial visualization** showing Service Desert districts across India:
+- 🔴 **Red markers** = Service Desert districts (< 50% compliance)
+- 🟡 **Yellow markers** = Moderate Risk districts (50-80%)
+- 🟢 **Green markers** = Compliant districts (> 80%)
+- **Click markers** for district-level details (MBU Gap, Compliance %)
 
 ---
 
