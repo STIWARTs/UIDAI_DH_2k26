@@ -43,7 +43,7 @@
 - [Problem Statement](#-problem-statement)
 - [Our Solution](#-our-solution)
 - [Key Features](#-key-features)
-- [Deep Learning Edition (NEW!)](#-deep-learning-edition-new)
+- [Deep Learning Edition](#-deep-learning-edition-new)
 - [Architecture](#-architecture)
 - [Key Findings](#-key-findings)
 - [Visualizations](#-visualizations)
@@ -358,6 +358,7 @@ Our analysis generates **8 interactive visualizations** for the hackathon submis
 > 📁 All visualizations are also available as interactive HTML files in `analysis_outputs/`
 
 ### 🗺️ Interactive Service Desert Map
+<img height="600" alt="image" src="https://github.com/user-attachments/assets/ac8366b4-9e67-4a4c-baa5-398eddad0b4f" />
 
 > **🔗 [Click here to view the Interactive India Map](https://stiwarts.github.io/UIDAI_DH_2k26/)**
 
