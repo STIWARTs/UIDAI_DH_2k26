@@ -16,6 +16,7 @@
   <a href="#problem-statement">Problem</a> •
   <a href="#solution">Solution</a> •
   <a href="#key-features">Features</a> •
+  <a href="Methodology.md">Methodology</a> •
   <a href="#visualizations">Visualizations</a> •
   <a href="#installation">Installation</a> •
   <a href="#tech-stack">Tech Stack</a> •
@@ -45,6 +46,7 @@
 - [Key Features](#-key-features)
 - [Deep Learning Edition](#-deep-learning-edition-new)
 - [Architecture](#-architecture)
+- [📊 Methodology Flow Diagram](Methodology.md)
 - [Key Findings](#-key-findings)
 - [Visualizations](#-visualizations)
 - [Installation](#-installation)
