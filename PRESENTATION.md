@@ -7,7 +7,7 @@
 
 ---
 
-## 🚀 30-Second Elevator Pitch
+## 🚀 Elevator Pitch
 
 > **"We built the MBU Gap Analyzer — a data-driven predictive engine that identifies 177,900 children at risk of losing government benefits worth ₹32+ Crore because their Aadhaar biometrics weren't updated on time. Our system prioritizes 8 'Service Desert' districts for immediate intervention and forecasts peak demand during school admission season, enabling proactive resource allocation."**
 
@@ -311,7 +311,7 @@ $$
 
 ---
 
-## 💬 Talking Points for Judges (Memorize These!)
+## 💬 Talking Points 
 
 ### 🎯 **Impact-First Framing**
 ✅ "We maximize impact per rupee by algorithmically ranking districts — send mobile kendras to the 8 highest-priority locations first"
@@ -372,7 +372,7 @@ jupyter nbconvert --to notebook --execute MBU_Gap_Analyzer.ipynb \
 
 ---
 
-## 🎓 Deep Technical Q&A — Anticipated Judge Questions
+## 🎓 Deep Technical Q&A
 
 ### Q1: **Where does the data come from and how reliable is it?**
 
@@ -768,7 +768,7 @@ Not just analysis — we deliver:
 
 ---
 
-## 🔥 Closing Statement (Memorize This!)
+## 🔥 Closing Statement
 
 > **"Every day we delay, more children slip through the cracks. Aadhaar becomes inactive. School admissions fail. Scholarships denied. DBT blocked. But it doesn't have to be this way.**
 > 
@@ -798,12 +798,12 @@ UIDAI Data Hackathon 2026
 
 ---
 
-## 🎯 Summary Checklist — Before Presenting
+## 🎯 Summary Checklist
 
 ✅ **Tested Demo Flow:** All notebooks run without errors  
 ✅ **Interactive Charts Ready:** HTML files open correctly in browser  
 ✅ **Service Desert CSV Loaded:** Ready to show in Excel/VSCode  
-✅ **Key Numbers Memorized:**
+✅ **Key Numbers:**
    - 177,900 children at risk
    - 8 Service Desert districts
    - ₹32 Crore financial impact
@@ -817,7 +817,7 @@ UIDAI Data Hackathon 2026
 
 ---
 
-## 🏅 Unique Value Propositions (Final Recap)
+## 🏅 Unique Value Propositions 
 
 | # | Feature | Competitor Approach | Our Approach | Impact |
 |:-:|:--------|:-------------------|:-------------|:-------|
