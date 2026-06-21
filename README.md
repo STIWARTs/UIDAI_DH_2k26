@@ -1,10 +1,6 @@
 
 <img width="1282" height="239" alt="UIDAI_Challenge" src="https://github.com/user-attachments/assets/33370c28-05f2-4f75-a0e5-a4a28fefd29d" />
 
-<p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/Aadhaar_Logo.svg/1200px-Aadhaar_Logo.svg.png" alt="UIDAI Logo" width="120"/>
-</p>
-
 <h1 align="center">MBU Gap Analyzer</h1>
 <h3 align="center">Predictive Gap Analysis Engine for Mandatory Biometric Updates</h3>
 
@@ -37,11 +33,12 @@
   <img src="https://img.shields.io/badge/Branch-deep--learning-orange?style=flat-square" alt="Deep Learning"/>
 </p>
 
-<img width="1919" height="686" alt="image" src="https://github.com/user-attachments/assets/c2b51102-88d3-43be-9703-7e687a7ccb25" />
+<img width="1919" height="686" alt="Screenshot 2026-06-21 000350" src="https://github.com/user-attachments/assets/b0265d08-7284-4df2-af0e-94abb253943a" />
+
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Problem Statement](#-problem-statement)
 - [Our Solution](#-our-solution)
@@ -60,7 +57,7 @@
 
 ---
 
-## 🎯 Problem Statement
+## Problem Statement
 
 ### The Hidden Crisis: Children Losing Benefits Due to MBU Non-Compliance
 
@@ -87,7 +84,7 @@ Children enrolled in Aadhaar are **mandated** to update their biometrics at two 
 
 ---
 
-## 💡 Our Solution
+## Our Solution
 
 ### MBU Gap Analyzer: A 3-Layer Predictive Engine
 
@@ -118,13 +115,13 @@ We built an intelligent system that identifies **"Ghost Cohorts"** — children 
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 <table>
 <tr>
 <td width="50%">
 
-### 📊 Cohort Tracking
+### Cohort Tracking
 - Aggregates **5M+ records** across enrolment, biometric, and demographic data
 - Computes district-wise MBU Compliance Ratio
 - Risk classification: Green / Yellow / Red zones
@@ -132,7 +129,7 @@ We built an intelligent system that identifies **"Ghost Cohorts"** — children 
 </td>
 <td width="50%">
 
-### 🗺️ Service Desert Mapping
+### Service Desert Mapping
 - K-Means clustering identifies underserved districts
 - Silhouette analysis for optimal cluster selection
 - Priority list for Aadhaar Seva Kendra deployment
@@ -142,7 +139,7 @@ We built an intelligent system that identifies **"Ghost Cohorts"** — children 
 <tr>
 <td width="50%">
 
-### 📈 Predictive Forecasting
+### Predictive Forecasting
 - 6-month ahead predictions using Prophet/Linear Regression
 - Identifies "Update Crunch" before school admission season
 - Confidence intervals for resource planning
@@ -150,7 +147,7 @@ We built an intelligent system that identifies **"Ghost Cohorts"** — children 
 </td>
 <td width="50%">
 
-### 💰 Impact Quantification
+### Impact Quantification
 - Calculates scholarships at risk (Rs. Crore)
 - DBT benefits potentially blocked
 - Actionable financial impact for policymakers
@@ -161,7 +158,7 @@ We built an intelligent system that identifies **"Ghost Cohorts"** — children 
 
 ---
 
-## 🚀 Deep Learning Edition
+## Deep Learning Edition
 
 > **Branch:** `deep-learning` | **Notebook:** `MBU_Gap_Analyzer_DeepLearning.ipynb`
 
@@ -257,7 +254,7 @@ jupyter notebook MBU_Gap_Analyzer_DeepLearning.ipynb
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ### Core Algorithm: MBU Compliance Ratio
 
@@ -302,7 +299,7 @@ Input Data                    Processing                      Output
 
 ---
 
-## 📊 Key Findings
+## Key Findings
 
 <table>
 <tr>
@@ -335,7 +332,7 @@ Red (Service Desert)  ██████                                    147 
 
 ---
 
-## 📈 Visualizations
+## Visualizations
 
 Our analysis generates **8 interactive visualizations** for the hackathon submission:
 
@@ -393,7 +390,7 @@ Explore the **Folium-powered geospatial visualization** showing Service Desert d
 
 ---
 
-## 🚀 Installation
+## Installation
 
 ### Prerequisites
 
@@ -443,7 +440,7 @@ pip install torch shap folium kaleido
 
 ---
 
-## 📖 Usage
+## Usage
 
 ### Run the Analysis
 
@@ -463,7 +460,7 @@ pip install torch shap folium kaleido
    - CSV exports saved to `analysis_outputs/` folder
    - HTML charts for PDF conversion
 
-#### 🚀 Deep Learning Edition (deep-learning branch)
+#### Deep Learning Edition (deep-learning branch)
 
 1. **Switch to deep-learning branch**
    ```bash
@@ -505,7 +502,7 @@ analysis_outputs/
 
 ---
 
-## 📁 Dataset Structure
+## Dataset Structure
 
 ```
 uidai_datasets/
@@ -538,7 +535,7 @@ uidai_datasets/
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 <table>
 <tr>
@@ -604,7 +601,7 @@ uidai_datasets/
 
 ---
 
-## 📋 Policy Recommendations
+## Policy Recommendations
 
 Based on our analysis, we recommend the following interventions:
 
@@ -618,7 +615,7 @@ Based on our analysis, we recommend the following interventions:
 
 ---
 
-## 👥 Team
+## Team
 
 <p align="center">
 <strong>Team OMEGA</strong>
@@ -635,7 +632,7 @@ Based on our analysis, we recommend the following interventions:
 
 ---
 
-## 📄 License
+## License
 
 This project is submitted as part of the UIDAI Data Hackathon 2026. All rights reserved.
 
