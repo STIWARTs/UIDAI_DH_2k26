@@ -37,6 +37,8 @@
   <img src="https://img.shields.io/badge/Branch-deep--learning-orange?style=flat-square" alt="Deep Learning"/>
 </p>
 
+<img width="1919" height="686" alt="image" src="https://github.com/user-attachments/assets/c2b51102-88d3-43be-9703-7e687a7ccb25" />
+
 ---
 
 ## 📋 Table of Contents
